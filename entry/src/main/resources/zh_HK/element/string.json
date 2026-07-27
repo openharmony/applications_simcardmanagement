@@ -1,0 +1,606 @@
+{
+    "string":[
+        {
+            "name":"sim_card_name",
+            "value":"卡片名稱",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"default_dial_card",
+            "value":"預設撥號 SIM 卡",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_no_card_inserted",
+            "value":"無 SIM 卡",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_card_two_no_space",
+            "value":"SIM 卡 %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_card_one_no_space",
+            "value":"SIM 卡 %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intellect_change_inter_card_description",
+            "value":"根據網絡質素和通話狀態暫用 SIM 卡 %1$d 上網，SIM 卡 %2$d 數據流量將有所消耗",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"deactivating_card_tip",
+            "value":"停用 %s 中，請稍候…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_edit",
+            "value":"編輯 SIM 卡 %s 資訊",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"default_mobile_data",
+            "value":"預設流動數據",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_no_service",
+            "value":"無服務",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"stop_use_card",
+            "value":"停用 SIM 卡 %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"確定",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"not_set",
+            "value":"未設定",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_headName",
+            "value":"SIM 卡管理",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"stop_use",
+            "value":"停用",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_phone_number",
+            "value":"手機號碼",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"activating_card_tip",
+            "value":"啟用 %s 中，請稍候…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"go_to_set",
+            "value":"設定",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_mobile_data_change",
+            "value":"預設流動數據將切換至 SIM 卡 %1$s。切換過程中，數據服務、電話撥打等功能將不可用。停用 SIM 卡 %2$s？",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_package_limit",
+            "value":"設定 SIM 卡 %s 計劃限額",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_additional_costs",
+            "value":"開啟該功能會消耗 SIM 卡 %s 數據流量，計劃限額設定後即可智能提醒，避免產生額外費用。",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_not_enabled",
+            "value":"未啟用",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intellect_change_inter_card",
+            "value":"智能切換上網 SIM 卡",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"取消",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_card_application_number",
+            "value":"SIM 卡 %s 應用程式",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_card_application",
+            "value":"SIM 卡應用程式",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dual_card_internet",
+            "value":"雙 SIM 卡上網",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"safety_tips_title",
+            "value":"安全提示",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"reset_pin_format_tips",
+            "value":"PIN 碼由 %1$d 至 %2$d 位數字組成，設定後請妥善儲存。",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dual_card_call",
+            "value":"雙 SIM 卡通話",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"verify_pin",
+            "value":"驗證 PIN 碼",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_pin_enter_hint",
+            "value":"SIM 卡 PIN 碼",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"current_pin",
+            "value":"現在的 PIN 碼",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enter_sim_pin_please",
+            "value":"輸入 SIM 卡 PIN 碼",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pin_error_retry",
+            "value":"PIN 碼不正確，剩餘嘗試次數：%d 次。",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_pin_reset",
+            "value":"找回 PIN 碼",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_pin_change",
+            "value":"修改 SIM  卡 PIN 碼",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"new_pin",
+            "value":"新的 PIN 碼",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"disable_sim_pin",
+            "value":"停用 SIM 卡保護",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"label_advanced",
+            "value":"進階",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"set_new_sim_pin",
+            "value":"設定新 SIM 卡 PIN 碼",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pin_locked",
+            "value":"PIN 已鎖定",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pin_restore_default",
+            "value":"為免下次啟用時忘記 PIN 碼，同意將您的 PIN 碼恢復為初始 PIN 碼 %d？",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_pin_tips",
+            "value":"啟用後，重新啟動手機或重新插卡時，需要輸入 PIN 碼才能使用手機",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_pin_enter_tips",
+            "value":"一般初始 PIN 碼為 %d，請務必修改。如已修改，則需輸入修改後的 PIN 碼。輕觸<a>關於 PIN 碼</a>了解更多。",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"button_agree_text",
+            "value":"同意",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"reset",
+            "value":"重新設定",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"help",
+            "value":"說明",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_sim_pin",
+            "value":"啟用 SIM 卡保護",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"set_new_sim_pin_again",
+            "value":"請再次輸入新 SIM 卡 PIN 碼",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"safety_tips_content",
+            "value":"您設定的密碼過於簡單，可能存在安全隱患。重新設定？",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"unlock_pin_dialog_input_hint",
+            "value":"請輸入 %1$d-%2$d 位的 PIN 碼",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_to_use",
+            "value":"繼續使用",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"unmatched",
+            "value":"PIN 碼不符合",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recommend_remember_pin",
+            "value":"建議啟用記住 PIN 碼功能，以便驗證時無需手動輸入",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_pin_unlock",
+            "value":"解除鎖定 SIM 卡",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_pin",
+            "value":"SIM 卡保護",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"satellite_sim_tips",
+            "value":"已啟用天通衛星網絡",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"satellite_other_sim_tips",
+            "value":"天通衛星通訊已啟用，此卡無法使用",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"mobile_network",
+            "value":"流動網絡",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_2",
+            "value":"SIM 卡 2",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_1",
+            "value":"SIM 卡 1",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"puk_locked",
+            "value":"PUK 已鎖定",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_sim_card_info",
+            "value":"編輯 SIM 卡資訊",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_card",
+            "value":"SIM 卡",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_application_2",
+            "value":"SIM 卡 2 應用程式",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_application_1",
+            "value":"SIM 卡 1 應用程式",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pin_description_tablet",
+            "value":"啟用後，重新啟動手機或重新插卡時，需要輸入 PIN 碼才能使用平板電腦",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"reset_pin_to_default_toast",
+            "value":"已恢復為初始 PIN 碼 %d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_intelligence_network",
+            "value":"允許智能使用上網卡",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_intelligence_network_summary",
+            "value":"根據網絡品質狀況，智能選擇卡 %1$s 上網，需要消耗卡 %2$s 流量",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligence_network_oobe_summary",
+            "value":"網絡加速服務為您智能選擇 WLAN 或流動數據（可能會增加流動數據的數據流量）。您可以前往「設定」>「流動網絡」>「網絡加速」停用本服務。",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_dualcard_oobe_summary",
+            "value":"根據網絡品質狀況，智能使用上網卡，提升雙 SIM 卡用戶上網體驗，此時會消耗雙 SIM 卡流量。您可以前往「設定」>「流動網絡」>「SIM 卡管理」停用本服務",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"intelligence_network_oobe",
+            "value":"網絡加速服務",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_dualcard_oobe",
+            "value":"智能使用上網卡服務",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_dualcard_dialog_guide",
+            "value":"可前往「設定」>「流動網絡」>「SIM 卡管理」修改",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_settings",
+            "value":"更多設定",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"mobile_data",
+            "value":"流動數據",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_card_one_no_space_default",
+            "value":"SIM 卡 %d（預設）",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_edit",
+            "value":"編輯",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_selected",
+            "value":"已勾選",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"puk_code",
+            "value":"PUK 碼",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_has_been_invalidated",
+            "value":"此 SIM 卡已作廢",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"please_enter_puk",
+            "value":"請輸入 PUK 碼",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"prompt_when_entering_PUK",
+            "value":"PUK 碼不是您的 SIM 卡 PIN 碼，請聯絡您的供應商取得。",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_unselected",
+            "value":"未選取",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,48 @@
+{
+  "module": {
+    "name": "simcardmanagement",
+    "type": "feature",
+    "srcEntry": "./ets/Application/MyAbilityStage.ets",
+    "description": "$string:simcardmanagement_desc",
+    "mainElement": "com.ohos.simcardmanagement.MainAbility",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "pages": "$profile:main_pages",
+    "metadata": [
+      {
+        "name": "ArkTSPartialUpdate",
+        "value": "true"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "com.ohos.simcardmanagement.MainAbility",
+        "srcEntrance": "./ets/MainAbility/MainAbility.ets",
+        "description": "$string:MainAbility_desc",
+        "icon": "$media:app_icon",
+        "label": "$string:MainAbility_label",
+        "startWindowIcon": "$media:app_start_window_icon",
+        "startWindowBackground": "$color:white",
+        "visible": true
+      }
+    ],
+    "requestPermissions" : [
+      {
+        "name": "ohos.permission.GET_NETWORK_INFO",
+        "reason": "$string:GET_NETWORK_INFO"
+      },
+      {
+        "name": "ohos.permission.SET_TELEPHONY_STATE",
+        "reason": "$string:SET_TELEPHONY_STATE"
+      },
+      {
+        "name": "ohos.permission.GET_TELEPHONY_STATE",
+        "reason": "$string:GET_TELEPHONY_STATE"
+      }
+    ]
+  }
+}

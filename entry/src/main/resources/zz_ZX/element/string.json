@@ -1,0 +1,392 @@
+{
+    "string":[
+        {
+            "name":"sim_card_name",
+            "value":"[TS_911404]_Card name"
+        },
+        {
+            "name":"default_dial_card",
+            "value":"[TS_911369]_Default calling SIM"
+        },
+        {
+            "name":"sim_no_card_inserted",
+            "value":"[TS_911380]_No SIM card"
+        },
+        {
+            "name":"sim_card_two_no_space",
+            "value":"[TS_911402]_SIM %s"
+        },
+        {
+            "name":"sim_card_one_no_space",
+            "value":"[TS_911359]_SIM %s"
+        },
+        {
+            "name":"default_mobile_data",
+            "value":"[TS_911386]_Default mobile data"
+        },
+        {
+            "name":"not_set",
+            "value":"[TS_911410]_Not set"
+        },
+        {
+            "name":"sim_headName",
+            "value":"[TS_911382]_SIM management"
+        },
+        {
+            "name":"sim_phone_number",
+            "value":"[TS_911355]_Number"
+        },
+        {
+            "name":"cancel",
+            "value":"[TS_911412]_Cancel"
+        },
+        {
+            "name":"sim_mobile_data_change",
+            "value":"[TS_911377]_Default data services will switch to SIM %1$s. Data, calls, and other features will be temporarily unavailable during the switch. Disable SIM %2$s?"
+        },
+        {
+            "name":"sim_no_service",
+            "value":"[TS_911364]_No service"
+        },
+        {
+            "name":"confirm",
+            "value":"[TS_911397]_OK"
+        },
+        {
+            "name":"SET_TELEPHONY_STATE",
+            "value":"[TS_911393]_set telephony state"
+        },
+        {
+            "name":"go_to_set",
+            "value":"[TS_911385]_Go set"
+        },
+        {
+            "name":"MainAbility_desc",
+            "value":"[TS_911356]_description"
+        },
+        {
+            "name":"MainAbility_label",
+            "value":"[TS_911354]_label"
+        },
+        {
+            "name":"GET_TELEPHONY_STATE",
+            "value":"[TS_911378]_get telephony state"
+        },
+        {
+            "name":"sim_package_limit",
+            "value":"[TS_911391]_Set data limit for SIM %s"
+        },
+        {
+            "name":"sim_edit",
+            "value":"[TS_911357]_Edit SIM %s details"
+        },
+        {
+            "name":"GET_NETWORK_INFO",
+            "value":"[TS_911407]_get network info"
+        },
+        {
+            "name":"stop_use_card",
+            "value":"[TS_911363]_Disable SIM %s"
+        },
+        {
+            "name":"sim_additional_costs",
+            "value":"[TS_911352]_Enabling this feature may result in additional usage fees for SIM %s. To avoid overspending, set a data limit and you'll be notified if you reach it."
+        },
+        {
+            "name":"simcardmanagement_desc",
+            "value":"[TS_911367]_description"
+        },
+        {
+            "name":"sim_not_enabled",
+            "value":"[TS_911387]_Inactive"
+        },
+        {
+            "name":"stop_use",
+            "value":"[TS_911368]_Disable"
+        },
+        {
+            "name":"intellect_change_inter_card",
+            "value":"[TS_911381]_Smart data switch"
+        },
+        {
+            "name":"activating_card_tip",
+            "value":"[TS_911388]_Enabling %s…"
+        },
+        {
+            "name":"deactivating_card_tip",
+            "value":"[TS_911390]_Disabling %s…"
+        },
+        {
+            "name":"sim_card_application",
+            "value":"[TS_911422]_SIM Toolkit"
+        },
+        {
+            "name":"intellect_change_inter_card_description",
+            "value":"[TS_922771]_Temporarily use SIM %1$d's data when the default data connection is poor or unavailable during a call. Usage fees may apply for SIM %2$d."
+        },
+        {
+            "name":"sim_card_application_number",
+            "value":"[TS_922770]_SIM %s Toolkit"
+        },
+        {
+            "name":"dual_card_internet",
+            "value":"[TS_911498]_Internet"
+        },
+        {
+            "name":"safety_tips_title",
+            "value":"[TS_914594]_Security tip"
+        },
+        {
+            "name":"reset_pin_format_tips",
+            "value":"[TS_914599]_Enter a %1$d to %2$d-digit PIN and be sure to remember it."
+        },
+        {
+            "name":"dual_card_call",
+            "value":"[TS_911502]_Calls"
+        },
+        {
+            "name":"verify_pin",
+            "value":"[TS_914587]_Enter PIN"
+        },
+        {
+            "name":"ACCESS_BIOMETRIC",
+            "value":"[TS_934976]_Allows apps to use biometric capabilities for authentication"
+        },
+        {
+            "name":"sim_pin_enter_hint",
+            "value":"[TS_914592]_SIM PIN"
+        },
+        {
+            "name":"current_pin",
+            "value":"[TS_914590]_Current PIN"
+        },
+        {
+            "name":"enter_sim_pin_please",
+            "value":"[TS_914593]_Enter SIM PIN"
+        },
+        {
+            "name":"pin_error_retry",
+            "value":"[TS_914736]_PIN incorrect. Attempts remaining: %d."
+        },
+        {
+            "name":"sim_pin_reset",
+            "value":"[TS_914169]_Reset PIN"
+        },
+        {
+            "name":"sim_pin_change",
+            "value":"[TS_914164]_Change SIM PIN"
+        },
+        {
+            "name":"sim_pin",
+            "value":"[TS_934977]_SIM PIN"
+        },
+        {
+            "name":"new_pin",
+            "value":"[TS_914595]_New PIN"
+        },
+        {
+            "name":"disable_sim_pin",
+            "value":"[TS_914597]_Disable SIM PIN"
+        },
+        {
+            "name":"label_advanced",
+            "value":"[TS_911499]_Advanced"
+        },
+        {
+            "name":"set_new_sim_pin",
+            "value":"[TS_914588]_Set new SIM PIN"
+        },
+        {
+            "name":"pin_locked",
+            "value":"[TS_916717]_PIN locked"
+        },
+        {
+            "name":"pin_restore_default",
+            "value":"[TS_914589]_Reset the PIN to %d?"
+        },
+        {
+            "name":"sim_pin_tips",
+            "value":"[TS_914165]_Require a PIN each time the phone restarts or the SIM is re-inserted."
+        },
+        {
+            "name":"sim_pin_enter_tips",
+            "value":"[TS_914603]_The default PIN is usually %d. Please change it as soon as possible. If you've already changed this PIN, enter the one you set. <a>About PIN</a>"
+        },
+        {
+            "name":"button_agree_text",
+            "value":"[TS_914605]_OK"
+        },
+        {
+            "name":"reset",
+            "value":"[TS_914596]_Change"
+        },
+        {
+            "name":"help",
+            "value":"[TS_914167]_Help"
+        },
+        {
+            "name":"enable_sim_pin",
+            "value":"[TS_914170]_SIM PIN"
+        },
+        {
+            "name":"set_new_sim_pin_again",
+            "value":"[TS_914600]_Confirm new SIM PIN"
+        },
+        {
+            "name":"safety_tips_content",
+            "value":"[TS_914598]_This password can be easily guessed. For your security, please choose a different one."
+        },
+        {
+            "name":"USE_USER_IDM",
+            "value":"[TS_916720]_Access system identity credential information"
+        },
+        {
+            "name":"unlock_pin_dialog_input_hint",
+            "value":"[TS_916718]_Enter %1$d to %2$d digit PIN"
+        },
+        {
+            "name":"continue_to_use",
+            "value":"[TS_914591]_Use anyway"
+        },
+        {
+            "name":"unmatched",
+            "value":"[TS_914601]_PINs don't match"
+        },
+        {
+            "name":"recommend_remember_pin",
+            "value":"[TS_914735]_Enable Remember PIN so you don't have to manually enter the PIN each time."
+        },
+        {
+            "name":"sim_pin_unlock",
+            "value":"[TS_916719]_Unlock SIM card"
+        },
+        {
+            "name":"satellite_sim_tips",
+            "value":"[TS_941249]_Tiantong satellite network enabled"
+        },
+        {
+            "name":"satellite_other_sim_tips",
+            "value":"[TS_941248]_Unavailable when Tiantong Satellite Communications is enabled"
+        },
+        {
+            "name":"PRIVACY_WINDOW",
+            "value":"[TS_942489]_Allow apps to set windows as privacy windows and prohibit screenshots and screen recording"
+        },
+        {
+            "name":"sim_application_2",
+            "value":"[TS_942874]_SIM 2 Toolkit"
+        },
+        {
+            "name":"sim_application_1",
+            "value":"[TS_942877]_SIM 1 Toolkit"
+        },
+        {
+            "name":"mobile_network",
+            "value":"[TS_942809]_Mobile network"
+        },
+        {
+            "name":"sim_2",
+            "value":"[TS_942876]_SIM 2"
+        },
+        {
+            "name":"sim_1",
+            "value":"[TS_942875]_SIM 1"
+        },
+        {
+            "name":"puk_locked",
+            "value":"[TS_934577]_PUK locked"
+        },
+        {
+            "name":"edit_sim_card_info",
+            "value":"[TS_949543]_Edit SIM card details"
+        },
+        {
+            "name":"sim_card",
+            "value":"[TS_942542]_SIM"
+        },
+        {
+            "name":"ACCESS_SYSTEM_SETTINGS",
+            "value":"[TS_949029]_Allowing an App to Access or Open the System Settings Page"
+        },
+        {
+            "name":"pin_description_tablet",
+            "value":"[TS_949901]_Require a PIN each time the tablet restarts or the SIM is re-inserted."
+        },
+        {
+            "name":"reset_pin_to_default_toast",
+            "value":"[TS_951846]_PIN reset to %d."
+        },
+        {
+            "name":"enable_intelligence_network",
+            "value":"[TS_949030]_Allow data switching"
+        },
+        {
+            "name":"enable_intelligence_network_summary",
+            "value":"[TS_949031]_Automatically switch to SIM %1$s data when the default connection is poor. May increase SIM %2$s data usage."
+        },
+        {
+            "name":"MANAGE_LOCAL_ACCOUNTS",
+            "value":"[TS_955941]_Allows an application to manage local system accounts."
+        },
+        {
+            "name":"intelligence_network_oobe_summary",
+            "value":"[TS_958441]_Network acceleration intelligently selects WLAN or mobile data based on the quality of your current network connection. Using this service may incur additional fees. You can disable this in Settings > Mobile network > Network acceleration."
+        },
+        {
+            "name":"smart_dualcard_oobe_summary",
+            "value":"[TS_958440]_This feature switches your data connection between SIMs based on your network connection quality. If you are using dual SIMs, enabling this feature may increase data usage on both SIMs. You can disable this at any time in Settings > Mobile network > SIM management."
+        },
+        {
+            "name":"intelligence_network_oobe",
+            "value":"[TS_958442]_Data boost"
+        },
+        {
+            "name":"smart_dualcard_oobe",
+            "value":"[TS_958443]_Smart data switching"
+        },
+        {
+            "name":"smart_dualcard_dialog_guide",
+            "value":"[TS_961895]_You can change these settings at any time in Settings > Mobile network > SIM management."
+        },
+        {
+            "name":"sim_card_one_no_space_default",
+            "value":"[TS_967374]_SIM %d (default)"
+        },
+        {
+            "name":"more_settings",
+            "value":"[TS_967373]_Settings"
+        },
+        {
+            "name":"mobile_data",
+            "value":"[TS_967375]_Mobile data"
+        },
+        {
+            "name":"accessibility_edit",
+            "value":"[TS_976076]_Edit"
+        },
+        {
+            "name":"accessibility_selected",
+            "value":"[TS_975846]_Selected"
+        },
+        {
+            "name":"puk_code",
+            "value":"[TS_976760]_PUK code"
+        },
+        {
+            "name":"sim_has_been_invalidated",
+            "value":"[TS_976765]_SIM card permanently locked."
+        },
+        {
+            "name":"please_enter_puk",
+            "value":"[TS_976761]_Enter PUK code"
+        },
+        {
+            "name":"prompt_when_entering_PUK",
+            "value":"[TS_976766]_The PUK is different from your SIM PIN. You can get it from your carrier."
+        },
+        {
+            "name":"accessibility_unselected",
+            "value":"[TS_994890]_Not selected"
+        }
+    ]
+}

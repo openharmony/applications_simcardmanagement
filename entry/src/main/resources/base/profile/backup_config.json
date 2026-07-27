@@ -1,0 +1,10 @@
+{
+  "allowToBackupRestore": true,
+  "include": [""],
+  "fullbackOnly": true,
+  "extraInfo": {
+    "supportScene": [
+      "hmos2next"
+    ]
+  }
+}

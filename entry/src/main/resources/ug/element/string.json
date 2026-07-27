@@ -1,0 +1,606 @@
+{
+    "string":[
+        {
+            "name":"sim_card_name",
+            "value":"كارتا نامى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"default_dial_card",
+            "value":"سۈكۈت چاقىرىق كارتىسى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_no_card_inserted",
+            "value":"كارتا يوق",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_card_two_no_space",
+            "value":"كارتا %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_card_one_no_space",
+            "value":"كارتا %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"intellect_change_inter_card_description",
+            "value":"تور سۈپىتى ۋە سۆزلىشىش ھالىتىگە قاراپ ھازىرچە %1$d گە ئالماشتۇرۇلدى، كارتا %2$d نىڭ ئېقىمى ئىشلىتىلىدۇ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"deactivating_card_tip",
+            "value":"%s ئېتىلىۋاتىدۇ...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_edit",
+            "value":"كارتا %s نىڭ ئۇچۇرىنى تەھرىرلەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"default_mobile_data",
+            "value":"سۈكۈت كۆچمە ئېقىم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_no_service",
+            "value":"مۇلازىمەت يوق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"stop_use_card",
+            "value":"كارتا %s نى ئېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"جەزملەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"not_set",
+            "value":"بېكىتمىگەن",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_headName",
+            "value":"\u200fSIM كارتا باشقۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"stop_use",
+            "value":"ئېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_phone_number",
+            "value":"يانفون نومۇرى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"activating_card_tip",
+            "value":"%s ئېچىلىۋاتىدۇ...",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"go_to_set",
+            "value":"تەڭشەك",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_mobile_data_change",
+            "value":"سۈكۈت كۆچمە ئېقىم كارتا %1$s گە ئالمىشىدۇ. ئالمىشىش جەريانىدا تور ۋە چاقىرىق ئىقتىدارى ئىشلىمەيدۇ. كارتا %2$s نى ئېتەمسىز؟",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_package_limit",
+            "value":"كارتا %s ئۈچۈن ئېقىم چېكى بېكىتىش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_additional_costs",
+            "value":"بۇ ئىقتىدارنى ئاچسىڭىز كارتا %s نىڭ ئېقىمى ئىشلىتىلىدۇ، ئېقىم چېكى بېكىتسىڭىز ئاڭلىق ئەسكەرتىدۇ، ئارتۇقچە چىقىمدىن ساقلىنالايسىز.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_not_enabled",
+            "value":"ئېتىك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intellect_change_inter_card",
+            "value":"تور كارتىسىنى ئاڭلىق ئالماشتۇرۇش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"بىكار قىلىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_card_application_number",
+            "value":"\u200fSIM %s ئەپ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_card_application",
+            "value":"\u200fSIM ئەپ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dual_card_internet",
+            "value":"تور",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"safety_tips_title",
+            "value":"بىخەتەرلىك ئەسكەرتمىسى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"reset_pin_format_tips",
+            "value":"\u200fPIN نومۇرى %1$d~%2$d خانىلىق ساندىن تۈزۈلىدۇ، ئۇنى ئۇنتۇپ قالماڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dual_card_call",
+            "value":"چاقىرىق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"verify_pin",
+            "value":"\u200fPIN دەلىللەش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_pin_enter_hint",
+            "value":"\u200fSIM كارتا PIN كودى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"current_pin",
+            "value":"نۆۋەتتىكى PIN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enter_sim_pin_please",
+            "value":"\u200fSIM كارتىنىڭ PIN نومۇرى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pin_error_retry",
+            "value":"PIN كودى خاتا. قايتا سىناش قېتىم سانى: %d",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_pin_reset",
+            "value":"\u200fPIN تېپىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_pin_change",
+            "value":"\u200fSIM كارتا PIN كودىنى ئۆزگەرتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"new_pin",
+            "value":"يېڭى PIN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"disable_sim_pin",
+            "value":"\u200fUIM كارتا قوغداشنى ئېتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"label_advanced",
+            "value":"ئالىي",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"set_new_sim_pin",
+            "value":"\u200fSIM كارتا ئۈچۈن يېڭى PIN بېكىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pin_locked",
+            "value":"\u200fPIN قۇلۇپلاق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pin_restore_default",
+            "value":"كېيىنكى قېتىم ئاچقاندا ئۇنتۇپ قالماسلىق ئۈچۈن PIN نى دەسلەپكى %d دېگەن نومۇرغا قايتۇرامسىز؟",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_pin_tips",
+            "value":"بۇ تەڭشەكنى ئاچسىڭىز، يانفوننى قايتا قوزغاتقان ياكى يېڭى كارتا سالغاندا PIN سورايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_pin_enter_tips",
+            "value":"دەسلەپكى PIN ئادەتتە %d بولىدۇ، ئۇنى ئۆزگەرتىۋېلىش كېرەك. ئۆزگەرتىپ بولغان بولسىڭىز، شۇ ئۆزگەرتكەن PIN نى كىرگۈزۈڭ. تەپسىلاتىنى <a>PIN ھەققىدە</a> دېگەن مەزمۇندىن كۆرۈڭ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"button_agree_text",
+            "value":"جەزملەش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"reset",
+            "value":"قايتا بېكىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"help",
+            "value":"ياردەم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_sim_pin",
+            "value":"\u200fSIM كارتا قوغداش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"set_new_sim_pin_again",
+            "value":"\u200fSIM كارتىنىڭ PIN نومۇرىنى قايتا كىرگۈزۈڭ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"safety_tips_content",
+            "value":"بۇ پارول بەك ئاددىي بولۇپ قالدى، بىخەتەر ئەمەس. بۇنى ئىشلەتمەي، قايتا بېكىتىشنى تەۋسىيە قىلىمىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"unlock_pin_dialog_input_hint",
+            "value":"%1$d ~ %2$d خانىلىق PIN كىرگۈزۈڭ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_to_use",
+            "value":"ئىشلىتىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"unmatched",
+            "value":"\u200fPIN بىردەك ئەمەس",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"recommend_remember_pin",
+            "value":"\u200fPIN ساقلاش ئىقتىدارىنى ئاچسىڭىز، قولدا كىرگۈزۈش ھاجەتسىز.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_pin_unlock",
+            "value":"\u200fSIM كارتا قۇلۇپىنى ئېچىش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_pin",
+            "value":"\u200fSIM كارتا قوغداش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"satellite_sim_tips",
+            "value":"تيەنتۇڭ سۈنئىي ھەمراھ تورى ئوچۇق.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"satellite_other_sim_tips",
+            "value":"تيەنتۇڭ سۈنئىي ھەمراھ ئالاقىسى ئوچۇق چاغدا بۇ كارتا ئىشلىمەيدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"mobile_network",
+            "value":"كۆچمە تور",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_2",
+            "value":"كارتا 2",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_1",
+            "value":"كارتا 1",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"puk_locked",
+            "value":"\u200fPUK قۇلۇپلاق",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_sim_card_info",
+            "value":"\u200fSIM كارتا ئۇچۇرىنى تەھرىرلەش",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_card",
+            "value":"\u200fSIM كارتا",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_application_2",
+            "value":"\u200fSIM كارتا 2 ئەپ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_application_1",
+            "value":"\u200fSIM كارتا 1 ئەپ",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"pin_description_tablet",
+            "value":"بۇ تەڭشەكنى ئاچسىڭىز، تاختا كومپيۇتېرنى قايتا قوزغاتقان ياكى كارتىنى قايتا سالغاندا PIN سورايدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"reset_pin_to_default_toast",
+            "value":"دەسلەپكى PIN ئەسلىگە كەلتۈرۈلدى: %d",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_intelligence_network",
+            "value":"ئاڭلىق تور كارتىسى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_intelligence_network_summary",
+            "value":"تور سۈپىتىگە قاراپ، كارتا %1$s ئۆزلۈكىدىن تاللىنىدۇ، كارتا %2$s دىن ئېقىم سەرپ بولىدۇ.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligence_network_oobe_summary",
+            "value":"تور تېزلىتىش ئىقتىدارى WLAN ياكى كۆچمە ئېقىمنى ئۆزلۈكىدىن تاللاپ تور تېزلىتىدۇ، ئېقىم سەرپىياتى ئېشىپ كېتىشى مۇمكىن. بۇ مۇلازىمەتنى تەڭشەك > كۆچمە تور > تور تېزلىتىش دېگەن ئورۇندىن ئېتەلەيسىز.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_dualcard_oobe_summary",
+            "value":"تور سۈپىتىگە قاراپ تور كارتىسى ئۆزلۈكىدىن تاللىنىدۇ. ھەر ئىككى كارتىدىن ئېقىم سەرپ بولىدۇ. بۇ مۇلازىمەتنى تەڭشەك > كۆچمە تور > SIM كارتا باشقۇرۇش دېگەن ئورۇندىن ئېتەلەيسىز.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"intelligence_network_oobe",
+            "value":"تور تېزلىتىش مۇلازىمىتى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_dualcard_oobe",
+            "value":"ئاڭلىق تور كارتىسى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_dualcard_dialog_guide",
+            "value":"تەڭشەك > كۆچمە تور > SIM باشقۇرۇش دېگەن ئورۇندىن ئۆزگەرتەلەيسىز.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_settings",
+            "value":"تەڭشەك",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"mobile_data",
+            "value":"كۆچمە ئېقىم",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_card_one_no_space_default",
+            "value":"كارتا %d (سۈكۈت)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_edit",
+            "value":"تەھرىرلەش",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_selected",
+            "value":"تاللاندى",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"puk_code",
+            "value":"\u200fPUK نومۇرى",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_has_been_invalidated",
+            "value":"بۇ SIM كارتا ئەمەلدىن قالغان.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"please_enter_puk",
+            "value":"\u200fPUK كىرگۈزۈڭ",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"prompt_when_entering_PUK",
+            "value":"يۈرۈتكۈچىدىن PUK نومۇرىنى سوراڭ، ئۇ SIM كارتىنىڭ PIN نومۇرى بىلەن بىر نومۇر ئەمەس.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_unselected",
+            "value":"تاللانمىدى",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

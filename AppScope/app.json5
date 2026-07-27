@@ -1,0 +1,15 @@
+{
+  "app": {
+    "bundleName": "com.ohos.simcardmanagement",
+    "vendor": "example",
+    "versionCode": 60100011,
+    "versionName": "6.1.0.11",
+    "icon": "$media:app_icon",
+    "label": "$string:sim_headName",
+    "generateBuildHash": true,
+    "distributedNotificationEnabled": true,
+    "minAPIVersion": 9,
+    "targetAPIVersion": 9,
+    "configuration": "$profile:configuration"
+  }
+}

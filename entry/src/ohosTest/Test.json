@@ -1,0 +1,53 @@
+{
+  "description": "Configuration for demo Tests",
+  "driver": {
+    "type": "OHJSUnitTest",
+    "test-timeout": "180000",
+    "bundle-name": "com.ohos.simcardmanagement",
+    "module-name": "simcardmanagement_test",
+    "shell-timeout": "600000",
+    "testcase-timeout": "30000",
+    "compile-mode": "esmodule",
+    "coverage": true,
+    "package-tool-path": "D:\\Local\\coverage\\node_modules\\@ohos\\coverage"
+  },
+  "kits": [
+    {
+      "type": "ShellKit",
+      "run-command": [
+        "param set persist.bms.test-upgrade true",
+        "param set persist.usb.setting.gadget_conn_prompt false",
+        "reboot",
+        "wait 5",
+        "power-shell wakeup",
+        "uinput -T -m 540 1752 540 751 500",
+        "power-shell timeout -o 1800000",
+        "power-shell setmode 602",
+        "uinput -T -c 630 1700"
+      ]
+    },
+    {
+      "push": [
+        "SimCardManagement.hap->/system/app/SimCardManagement/SimCardManagement.hap"
+      ],
+      "type": "PushKit",
+      "post-push": [
+        "sync",
+        "/system/bin/udevadm trigger",
+        "reboot"
+      ]
+    },
+    {
+      "push": [
+        "SimCardManagementTest.hap->/data/local/tmp/SimCardManagementTest.hap"
+      ],
+      "type": "PushKit",
+      "post-push": [
+        "bm install -p /data/local/tmp/SimCardManagementTest.hap"
+      ],
+      "teardown-command":[
+        "power-shell setmode 600"
+      ]
+    }
+  ]
+}

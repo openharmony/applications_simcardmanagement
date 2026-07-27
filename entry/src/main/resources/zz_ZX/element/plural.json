@@ -1,0 +1,91 @@
+{
+    "plural":[
+        {
+            "name":"warn_on_wrong_pin",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_916793]_SIM will be locked after %d failed attempt."
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_916798]_SIM will be locked after %d failed attempts."
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_916800]_SIM will be locked after %d failed attempts."
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_916802]_SIM will be locked after %d failed attempts."
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_916797]_SIM will be locked after %d failed attempts."
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_916801]_SIM will be locked after %d failed attempts."
+                }
+            ]
+        },
+        {
+            "name":"unlock_pin_dialog_hint",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"[TS_916794]_%d attempts remaining"
+                },
+                {
+                    "quantity":"one",
+                    "value":"[TS_916791]_%d attempt remaining"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_916792]_%d attempts remaining"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_916795]_%d attempts remaining"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_916796]_%d attempts remaining"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_916799]_%d attempts remaining"
+                }
+            ]
+        },
+        {
+            "name":"warn_on_wrong_puk",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"[TS_976762]_SIM card will be permanently locked after %d more failed attempt"
+                },
+                {
+                    "quantity":"other",
+                    "value":"[TS_976763]_SIM card will be permanently locked after %d more failed attempts"
+                },
+                {
+                    "quantity":"zero",
+                    "value":"[TS_976764]_SIM card will be permanently locked after %d more failed attempts"
+                },
+                {
+                    "quantity":"few",
+                    "value":"[TS_976767]_SIM card will be permanently locked after %d more failed attempts"
+                },
+                {
+                    "quantity":"many",
+                    "value":"[TS_976759]_SIM card will be permanently locked after %d more failed attempts"
+                },
+                {
+                    "quantity":"two",
+                    "value":"[TS_976768]_SIM card will be permanently locked after %d more failed attempts"
+                }
+            ]
+        }
+    ]
+}

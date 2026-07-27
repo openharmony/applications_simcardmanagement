@@ -1,0 +1,40 @@
+{
+    "plural":[
+        {
+            "name":"warn_on_wrong_pin",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"輸錯 %d 次將鎖定 SIM 卡。",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"unlock_pin_dialog_hint",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"SIM 卡 PIN 碼（%d 次）",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"warn_on_wrong_puk",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"若輸錯 %d 次，SIM 卡將作廢。",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}
