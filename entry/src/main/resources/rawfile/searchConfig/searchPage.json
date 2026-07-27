@@ -1,0 +1,144 @@
+{
+  "version": {
+    "curVersion": "1.0.4"
+  },
+  "searchPages": [
+    {
+      "pageTitle": "$string:sim_headName",
+      "pageDescription": "",
+      "entryKey": "sim_card_management_entry",
+      "path": [
+        "$string:mobile_network",
+        "$string:sim_headName"
+      ],
+      "supportDevices": [
+        "phone",
+        "tablet"
+      ],
+      "params": "",
+      "searchItems": [
+        {
+          "itemName": "sim_1",
+          "itemTitle": "$string:sim_1",
+          "itemDescription": "",
+          "icon": "",
+          "enable": "true",
+          "childItems": "",
+          "alias": "",
+          "checkItem": {
+            "type": "param",
+            "checkKey": "const.telephony.slotCount",
+            "value": "2"
+          }
+        },
+        {
+          "itemName": "sim_2",
+          "itemTitle": "$string:sim_2",
+          "itemDescription": "",
+          "icon": "",
+          "enable": "true",
+          "childItems": "",
+          "alias": "",
+          "checkItem": {
+            "type": "param",
+            "checkKey": "const.telephony.slotCount",
+            "value": "2"
+          }
+        },
+        {
+          "itemName": "sim_card",
+          "itemTitle": "$string:sim_card",
+          "itemDescription": "",
+          "icon": "",
+          "enable": "true",
+          "childItems": "",
+          "alias": "",
+          "checkItem": {
+            "type": "param",
+            "checkKey": "const.telephony.slotCount",
+            "value": "1"
+          }
+        },
+        {
+          "itemName": "default_mobile_data",
+          "itemTitle": "$string:default_mobile_data",
+          "itemDescription": "",
+          "icon": "",
+          "enable": "true",
+          "childItems": "",
+          "alias": "默认卡设置|默认上网卡|首选 SIM卡|首选上网 SIM 卡|主卡|Default card settings|Default network SIM|Preferred SIM|Preferred network SIM|Main SIM",
+          "checkItem": {
+            "type": "param",
+            "checkKey": "const.telephony.slotCount",
+            "value": "2"
+          }
+        },
+        {
+          "itemName": "default_dial_card",
+          "itemTitle": "$string:default_dial_card",
+          "itemDescription": "",
+          "icon": "",
+          "enable": "true",
+          "childItems": "",
+          "alias": "默认卡设置|默认拨号卡|首选 SIM 卡|首选拨号 SIM 卡|主卡|Default calling SIM|Preferred SIM|Preferred network SIM|Preferred calling SIM|Main SIM",
+          "checkItem": {
+            "type": "param",
+            "checkKey": "const.telephony.slotCount",
+            "value": "2"
+          }
+        },
+        {
+          "itemName": "sim_pin",
+          "itemTitle": "$string:sim_pin",
+          "itemDescription": "",
+          "icon": "",
+          "enable": "true",
+          "childItems": "",
+          "alias": ""
+        },
+        {
+          "itemName": "sim_application_1",
+          "itemTitle": "$string:sim_application_1",
+          "itemDescription": "",
+          "icon": "",
+          "enable": "true",
+          "childItems": "",
+          "alias": "",
+          "checkItem": {
+            "type": "param",
+            "checkKey": "const.telephony.slotCount",
+            "value": "2"
+          }
+        },
+        {
+          "itemName": "sim_application_2",
+          "itemTitle": "$string:sim_application_2",
+          "itemDescription": "",
+          "icon": "",
+          "enable": "true",
+          "childItems": "",
+          "alias": "",
+          "checkItem": {
+            "type": "param",
+            "checkKey": "const.telephony.slotCount",
+            "value": "2"
+          }
+        },
+        {
+          "itemName": "sim_card_application",
+          "itemTitle": "$string:sim_card_application",
+          "itemDescription": "",
+          "icon": "",
+          "enable": "true",
+          "childItems": "",
+          "alias": "",
+          "checkItem": {
+            "type": "param",
+            "checkKey": "const.telephony.slotCount",
+            "value": "1"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,650 @@
+{
+    "string":[
+        {
+            "name":"simcardmanagement_desc",
+            "value":"description"
+        },
+        {
+            "name":"MainAbility_desc",
+            "value":"description"
+        },
+        {
+            "name":"MainAbility_label",
+            "value":"label"
+        },
+        {
+            "name":"default_mobile_data",
+            "value":"Default mobile data",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intellect_change_inter_card",
+            "value":"Smart data switch",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"intellect_change_inter_card_description",
+            "value":"Temporarily use SIM %1$d's data when the default data connection is poor or unavailable during a call. Usage fees may apply for SIM %2$d.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"go_to_set",
+            "value":"Go set",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"default_dial_card",
+            "value":"Default calling SIM",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"not_set",
+            "value":"Not set",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"confirm",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"cancel",
+            "value":"Cancel",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"stop_use",
+            "value":"Disable",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"stop_use_card",
+            "value":"Disable SIM %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_headName",
+            "value":"SIM management",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_not_enabled",
+            "value":"Inactive",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_no_service",
+            "value":"No service",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_no_card_inserted",
+            "value":"No SIM card",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_card_one_no_space",
+            "value":"SIM %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_card_two_no_space",
+            "value":"SIM %s",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_card_name",
+            "value":"Card name",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_phone_number",
+            "value":"Number",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_edit",
+            "value":"Edit SIM %s details",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_mobile_data_change",
+            "value":"Default data services will switch to SIM %1$s. Data, calls, and other features will be temporarily unavailable during the switch. Disable SIM %2$s?",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_package_limit",
+            "value":"Set data limit for SIM %s",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_additional_costs",
+            "value":"Enabling this feature may result in additional usage fees for SIM %s. To avoid overspending, set a data limit and you'll be notified if you reach it.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_card_application",
+            "value":"SIM Toolkit",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_card_application_number",
+            "value":"SIM %s Toolkit",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"GET_NETWORK_INFO",
+            "value":"get network info"
+        },
+        {
+            "name":"SET_TELEPHONY_STATE",
+            "value":"set telephony state"
+        },
+        {
+            "name":"GET_TELEPHONY_STATE",
+            "value":"get telephony state"
+        },
+        {
+            "name":"activating_card_tip",
+            "value":"Enabling %s…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"deactivating_card_tip",
+            "value":"Disabling %s…",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"dual_card_internet",
+            "value":"Internet",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"dual_card_call",
+            "value":"Calls",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"label_advanced",
+            "value":"Advanced",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_pin",
+            "value":"SIM PIN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_sim_pin",
+            "value":"SIM PIN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_pin_tips",
+            "value":"Require a PIN each time the phone restarts or the SIM is re-inserted.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_pin_change",
+            "value":"Change SIM PIN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_pin_reset",
+            "value":"Reset PIN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"help",
+            "value":"Help",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_pin_enter_hint",
+            "value":"SIM PIN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_pin_enter_tips",
+            "value":"The default PIN is usually %d. Please change it as soon as possible. If you've already changed this PIN, enter the one you set. <a>About PIN</a>",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"verify_pin",
+            "value":"Enter PIN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"current_pin",
+            "value":"Current PIN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"new_pin",
+            "value":"New PIN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enter_sim_pin_please",
+            "value":"Enter SIM PIN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"disable_sim_pin",
+            "value":"Disable SIM PIN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"set_new_sim_pin",
+            "value":"Set new SIM PIN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"set_new_sim_pin_again",
+            "value":"Confirm new SIM PIN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"reset_pin_format_tips",
+            "value":"Enter a %1$d to %2$d-digit PIN and be sure to remember it.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pin_restore_default",
+            "value":"Reset the PIN to %d?",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"button_agree_text",
+            "value":"OK",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"safety_tips_title",
+            "value":"Security tip",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"safety_tips_content",
+            "value":"This password can be easily guessed. For your security, please choose a different one.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"reset",
+            "value":"Change",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"continue_to_use",
+            "value":"Use anyway",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"unmatched",
+            "value":"PINs don't match",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pin_error_retry",
+            "value":"PIN incorrect. Attempts remaining: %d.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"recommend_remember_pin",
+            "value":"Enable Remember PIN so you don't have to manually enter the PIN each time.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"USE_USER_IDM",
+            "value":"Access system identity credential information"
+        },
+        {
+            "name":"unlock_pin_dialog_input_hint",
+            "value":"Enter %1$d to %2$d digit PIN",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_pin_unlock",
+            "value":"Unlock SIM card",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pin_locked",
+            "value":"PIN locked",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ACCESS_BIOMETRIC",
+            "value":"Allows apps to use biometric capabilities for authentication"
+        },
+        {
+            "name":"PRIVACY_WINDOW",
+            "value":"Allow apps to set windows as privacy windows and prohibit screenshots and screen recording"
+        },
+        {
+            "name":"satellite_sim_tips",
+            "value":"Tiantong satellite network enabled",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"satellite_other_sim_tips",
+            "value":"Unavailable when Tiantong Satellite Communications is enabled",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"mobile_network",
+            "value":"Mobile network",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_1",
+            "value":"SIM 1",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_2",
+            "value":"SIM 2",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_application_1",
+            "value":"SIM 1 Toolkit",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"sim_application_2",
+            "value":"SIM 2 Toolkit",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"puk_locked",
+            "value":"PUK locked",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"ACCESS_SYSTEM_SETTINGS",
+            "value":"Allowing an App to Access or Open the System Settings Page"
+        },
+        {
+            "name":"MANAGE_LOCAL_ACCOUNTS",
+            "value":"Allows an application to manage local system accounts."
+        },
+        {
+            "name":"sim_card",
+            "value":"SIM",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"edit_sim_card_info",
+            "value":"Edit SIM card details",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"pin_description_tablet",
+            "value":"Require a PIN each time the tablet restarts or the SIM is re-inserted.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"reset_pin_to_default_toast",
+            "value":"PIN reset to %d.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_intelligence_network",
+            "value":"Allow data switching",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"enable_intelligence_network_summary",
+            "value":"Automatically switch to SIM %1$s data when the default connection is poor. May increase SIM %2$s data usage.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_dualcard_oobe",
+            "value":"Smart data switching",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"smart_dualcard_oobe_summary",
+            "value":"This feature switches your data connection between SIMs based on your network connection quality. If you are using dual SIMs, enabling this feature may increase data usage on both SIMs. You can disable this at any time in Settings > Mobile network > SIM management.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"intelligence_network_oobe",
+            "value":"Data boost",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"intelligence_network_oobe_summary",
+            "value":"Network acceleration intelligently selects WLAN or mobile data based on the quality of your current network connection. Using this service may incur additional fees. You can disable this in Settings > Mobile network > Network acceleration.",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"smart_dualcard_dialog_guide",
+            "value":"You can change these settings at any time in Settings > Mobile network > SIM management.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"mobile_data",
+            "value":"Mobile data",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"more_settings",
+            "value":"Settings",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_card_one_no_space_default",
+            "value":"SIM %d (default)",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_edit",
+            "value":"Edit",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"accessibility_selected",
+            "value":"Selected",
+            "attr":{
+                "priority":"translate"
+            }
+        },
+        {
+            "name":"please_enter_puk",
+            "value":"Enter PUK code",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"puk_code",
+            "value":"PUK code",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"prompt_when_entering_PUK",
+            "value":"The PUK is different from your SIM PIN. You can get it from your carrier.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"sim_has_been_invalidated",
+            "value":"SIM card permanently locked.",
+            "attr":{
+                "priority":"LT"
+            }
+        },
+        {
+            "name":"accessibility_unselected",
+            "value":"Not selected",
+            "attr":{
+                "priority":"translate"
+            }
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+{
+    "string":[
+        {
+            "name":"sim_headName",
+            "value":"SIM management",
+            "attr":{
+                "priority":"LT"
+            }
+        }
+    ]
+}

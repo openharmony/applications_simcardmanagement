@@ -1,0 +1,40 @@
+{
+    "plural":[
+        {
+            "name":"warn_on_wrong_pin",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"ཐེངས་ %d ནང་འཇུག་བྱས་ཚེ་ SIM བྱང་བུར་སྒོ་ལྕགས་ཐེབས།",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"unlock_pin_dialog_hint",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"SIM བྱང་བུའི་ PIN ཨང་གྲངས (ཐེངས་ %d)",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"warn_on_wrong_puk",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"ནང་འཇུག་བྱེད་ནོར་ཐེངས་ %d བྱས་ན་ SIM བྱང་བུ་རྩིས་མེད་དུ་གཏོང་སྲིད།",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

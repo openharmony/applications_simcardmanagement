@@ -1,0 +1,61 @@
+{
+    "plural":[
+        {
+            "name":"warn_on_wrong_pin",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d قېتىم خاتا كىرگۈزسىڭىز، SIM كارتا قۇلۇپلىنىدۇ.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d قېتىم خاتا كىرگۈزسىڭىز، SIM كارتا قۇلۇپلىنىدۇ.",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"unlock_pin_dialog_hint",
+            "value":[
+                {
+                    "quantity":"other",
+                    "value":"\u200fSIM كارتىنىڭ PIN نومۇرى (%d پۇرسەت قالدى)",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                },
+                {
+                    "quantity":"one",
+                    "value":"\u200fSIM كارتىنىڭ PIN نومۇرى (%d پۇرسەت قالدى)",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"warn_on_wrong_puk",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d قېتىم خاتا كىرگۈزسىڭىز، SIM كارتا ئەمەلدىن قالىدۇ.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d قېتىم خاتا كىرگۈزسىڭىز، SIM كارتا ئەمەلدىن قالىدۇ.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

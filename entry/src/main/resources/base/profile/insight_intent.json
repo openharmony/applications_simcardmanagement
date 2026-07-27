@@ -1,0 +1,124 @@
+{
+  "insightIntents": [
+    {
+      "domain": "SimManagerDomain",
+      "intentName": "CheckSettingPage",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/insightintents/IntentExecutorImpl.ets",
+      "uiAbility": {
+        "ability": "DefaultIntentBackgroundUiAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "domain": "SimManagerDomain",
+      "intentName": "GetSimCardNumber",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/insightintents/IntentExecutorImpl.ets",
+      "uiAbility": {
+        "ability": "DefaultIntentBackgroundUiAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "domain": "SimManagerDomain",
+      "intentName": "GetDefaultMobileDataSimCard",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/insightintents/IntentExecutorImpl.ets",
+      "uiAbility": {
+        "ability": "DefaultIntentBackgroundUiAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "domain": "SimManagerDomain",
+      "intentName": "SetDefaultMobileDataSimCard",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/insightintents/IntentExecutorImpl.ets",
+      "uiAbility": {
+        "ability": "DefaultIntentBackgroundUiAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "domain": "SimManagerDomain",
+      "intentName": "GetDefaultDialingSimCard",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/insightintents/IntentExecutorImpl.ets",
+      "uiAbility": {
+        "ability": "DefaultIntentBackgroundUiAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "domain": "SimManagerDomain",
+      "intentName": "SetDefaultDialingSimCard",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/insightintents/IntentExecutorImpl.ets",
+      "uiAbility": {
+        "ability": "DefaultIntentBackgroundUiAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "domain": "SimManagerDomain",
+      "intentName": "CheckSimSwitch",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/insightintents/IntentExecutorImpl.ets",
+      "uiAbility": {
+        "ability": "DefaultIntentBackgroundUiAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "domain": "SimManagerDomain",
+      "intentName": "GetSimSwitch",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/insightintents/IntentExecutorImpl.ets",
+      "uiAbility": {
+        "ability": "DefaultIntentBackgroundUiAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "domain": "SimManagerDomain",
+      "intentName": "SetSimSwitch",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/insightintents/IntentExecutorImpl.ets",
+      "uiAbility": {
+        "ability": "DefaultIntentBackgroundUiAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    },
+    {
+      "domain": "SimManagerDomain",
+      "intentName": "CheckSettingItem",
+      "intentVersion": "1.0.1",
+      "srcEntry": "./ets/insightintents/IntentExecutorImpl.ets",
+      "uiAbility": {
+        "ability": "DefaultIntentBackgroundUiAbility",
+        "executeMode": [
+          "background"
+        ]
+      }
+    }
+  ]
+}

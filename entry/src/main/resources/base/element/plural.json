@@ -1,0 +1,61 @@
+{
+    "plural":[
+        {
+            "name":"warn_on_wrong_pin",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"SIM will be locked after %d failed attempt.",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"SIM will be locked after %d failed attempts.",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"unlock_pin_dialog_hint",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"%d attempt remaining",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"%d attempts remaining",
+                    "attr":{
+                        "priority":"LT"
+                    }
+                }
+            ]
+        },
+        {
+            "name":"warn_on_wrong_puk",
+            "value":[
+                {
+                    "quantity":"one",
+                    "value":"SIM card will be permanently locked after %d more failed attempt",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                },
+                {
+                    "quantity":"other",
+                    "value":"SIM card will be permanently locked after %d more failed attempts",
+                    "attr":{
+                        "priority":"translate"
+                    }
+                }
+            ]
+        }
+    ]
+}

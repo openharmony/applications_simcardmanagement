@@ -1,0 +1,51 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "release",
+        "material": {
+          "storeFile": "signature/OpenHarmony.p12",
+          "storePassword": "000000161D1D8692DEED7E7520044AC1E50C4DF6163EF8FE8E9EE15A3E7BC1C1B4152C30EA0C",
+          "keyAlias": "OpenHarmony Application Release",
+          "keyPassword": "00000016360A50ACBD1A6553825947E31F0EC6C2F8C848D88D86A30ABA578A7AEDA2949865EF",
+          "signAlg": "SHA256withECDSA",
+          "profile": "signature/simcardmanagement.p7b",
+          "certpath": "signature/OpenHarmony.cer"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "release",
+        "compileSdkVersion": 23,
+        "compatibleSdkVersion": 20,
+        "targetSdkVersion": 20,
+        "runtimeOS": "OpenHarmony",
+        "compatibleSdkVersionStage": "beta3"
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}
