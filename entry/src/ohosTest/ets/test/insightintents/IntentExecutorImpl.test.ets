@@ -18,7 +18,7 @@ import IntentExecutorImpl from '../../../../main/ets/insightintents/IntentExecut
 
 const intentName = 'GetSimSwitch';
 const executeParam: Record<string, string | Record<string, number>> = {
-  "bundleName": "com.oh.simcardmanagement",
+  "bundleName": "com.ohos.simcardmanagement",
   "executeMode": "background",
   "intentName": "GetSimSwitch",
   "intentParam": {

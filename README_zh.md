@@ -1,123 +1,75 @@
-# SimCardManagement
+# SIM 卡管理（SimCardManagement）
 
 ## 简介
-**SimCardManagement**（包名：`com.ohos.simcardmanagement`）是 OpenHarmony 电话子系统中的 **SIM 卡管理系统应用**，负责展示卡槽与运营商信息、管理默认数据卡 / 拨号卡策略、提供 PIN/PUK 安全保护与智能双卡切换，并与设置、SceneBoard、Insight Intent、SimToolkits 等系统组件协同工作。
 
-本应用为系统预置应用，通常通过「设置 → 移动网络 → SIM 卡管理」等入口进入，支持 Phone、Pad等设备形态。
+**SIM 卡管理**（包名：`com.ohos.simcardmanagement`）是 OpenHarmony 电话子系统中的 **系统应用**，负责卡槽与运营商信息展示，并提供编辑卡信息、启用/停用 SIM 卡、SIM 卡保护、默认移动数据选择与默认拨号卡设置等能力，适配手机、平板设备形态。
 
 ### 核心能力
 
-**系统交互入口**
-- 使用 `UIExtensionAbility`（`sys/commonUI`）作为主入口（`com.ohos.simcardmanagement.MainAbility`）。
-- 支持从设置搜索、SceneBoard 控制中心及相关系统流程拉起。
-- 提供智能双卡对话框扩展（`SmartDualCardDialogAbility`）。
-
-**SIM 信息与策略管理**
+**编辑卡信息**
 - 展示卡槽状态、运营商、号码、SPN 等信息。
-- 支持 SIM 启停、SIM 名称/号码编辑、默认移动数据卡、默认拨号卡设置。
-- 通过 `simServiceProxy`、`radioServiceProxy`、`dataServiceProxy` 封装 TelephonyKit 能力。
+- 支持编辑 SIM 名称与号码，变更通过 TelephonyKit 写入系统。
 
-**SIM 安全能力**
-- 支持 PIN 锁开关、PIN 修改、PIN/PUK 解锁。
-- 可按场景与用户认证 / 锁屏能力联动。
+**启用/停用 SIM 卡**
+- 支持按卡槽启用或停用 SIM 卡。
+- 启停状态与卡槽信息随 SIM / 网络状态变化刷新。
 
-**系统集成能力**
-- 通过 `MobileDataChangeExtAbility` 与 SceneBoard 控制中心集成。
-- 提供 `IntentExecutorImpl`、`insight_intent.json` 与 `DefaultIntentBackgroundUiAbility` 等 Insight Intent 源码；当前 `module.json5` 未声明对应 profile，实际生效需由产品集成时完成打包与验证。
-- 支持备份恢复（声明名 `BackupExtensionAbility`，实现类 `BackupExtension`）与定时统计（`ReporterWorkSchedulerAbility`）。
-- 与 SimToolkits 协同完成 STK 入口联动。
+**SIM 卡保护**
+- 提供 SIM 卡保护设置入口与相关交互（含 PIN 相关能力）。
+- 可与用户认证、锁屏等系统能力联动。
 
-> **说明**：本仓定位为 SIM 卡管理 **应用层**。底层 SIM / Radio / Data 能力由 Telephony 子系统提供；本应用通过 TelephonyKit 接口间接操作，不直接修改协议栈。
+**默认移动数据选择**
+- 支持在双卡场景下选择默认移动数据（上网）卡。
+- 主页与控制中心扩展均可触发策略切换。
 
-### SimCardManagement 与 Telephony 的关系
-
-SimCardManagement 依赖电话子系统（Telephony），本身不包含 Modem / RIL 实现。
-
-**事件与调用关系上**：
-1. 设置等入口拉起 `com.ohos.simcardmanagement.MainAbility`，SceneBoard 通过 `MobileDataChangeExtAbility` 协同；Insight Intent 相关源码由 `IntentExecutorImpl` 承载，需在 profile 完成产品集成后生效。
-2. 本应用通过 TelephonyKit 代理查询 / 设置 SIM、Radio、Data 相关状态与策略。
-3. 设置入口与 STK 入口显隐分别通过 Settings 数据服务和 `SimToolkitsComponent` 协同完成。
-
-> 例如，一次典型的默认数据卡切换流程：
-> - 设置搜索或主页面拉起 `MainAbility`；
-> - `SimCardModel` / 代理层读取当前卡槽与数据卡状态；
-> - 用户选择后通过 TelephonyKit 写入默认数据卡策略；
-> - SceneBoard / 控制中心侧可经 `MobileDataChangeExtAbility` 同步展示。
+**默认拨号卡设置**
+- 支持设置默认语音 / 拨号使用的 SIM 卡槽。
+- 与通话侧默认卡策略保持一致。
 
 ## 架构说明
 
-SimCardManagement 采用分层与模块化设计，并与电话子系统协同工作。
+SimCardManagement 采用分层与模块化设计，按产品入口、业务特性与公共能力组织代码，如图：
 
-### 在系统中的定位
+![架构说明](./docs/figures/simcardmanagement.png)
 
-SimCardManagement 位于应用层，依赖 Telephony 提供 SIM / Radio / Data 能力，同时与设置、SceneBoard、SimToolkits 协同完成入口、控制中心与 STK 联动。
+### 应用层分层设计
 
-![SimCardManagement in OpenHarmony](./docs/figures/simcardmanagement_in_os.png)
+整体可划分为产品层、特性层、公共层：
 
-### 分层设计
+| 层次   | 主要目录 / 组件 | 说明 |
+|------| -------------- | ---- |
+| 产品层 | `entry` | 手机 / 平板形态 |
+| 特性层 | `model/`、`pages/`、`uiExtensionAbility/`、`insightintents/` | 编辑卡信息、启用/停用 SIM、SIM 卡保护、默认移动数据、默认拨号卡 |
+| 公共层 | `database/`、`common/`、`backup/`、`utils/` | 数据库、公共组件、备份恢复、工具类 |
 
-整体可划分为产品层（Ability 入口）、特性层（SIM 管理能力）、公共层（代理 / 存储 / 工具），如图：
+**特性层模块说明**：
 
-![SimCardManagement 分层架构](./docs/figures/simcardmanagement_architecture.png)
+| 核心能力   | 模块 | 说明 |
+|--------|----------------|------|
+| 编辑卡信息   | `pages/index.ets`、`common/components/cardInfomation.ets`、`common/components/dialog/editSimInfoDialog.ets`、`model/simServiceProxy.ets` | 卡信息展示与名称/号码编辑 |
+| 启用/停用 SIM 卡   | `common/components/cardInfomation.ets`、`model/simServiceProxy.ets` | `isSimActive` / `setSimActive` 封装与启停 UI |
+| SIM 卡保护   | `pages/simProtection.ets`、`common/components/pinComponent.ets`、`model/pinModel.ets`、`model/PinViewModel.ets` | SIM 卡保护页与 PIN 相关交互 |
+| 默认移动数据选择   | `common/components/defaultDataComponent.ets`、`model/radioServiceProxy.ets`、`uiExtensionAbility/MobileDataChangeExtAbility.ets` | 默认上网卡选择与控制中心联动 |
+| 默认拨号卡设置   | `pages/index.ets`、`common/components/dialog/selectDefaultVoiceDialog.ets`、`model/simServiceProxy.ets` | 默认语音卡查询与设置 |
 
-| 层次 | 主要目录 / 组件 | 说明 |
-| ---- | --------------- | ---- |
-| 产品层 / 应用入口 | `MainAbility/`、`pages/`、`uiExtensionAbility/` | UIExtension 主入口、页面路由、控制中心与双卡对话框扩展 |
-| 特性层 / SIM 业务 | `model/`、`insightintents/` | 卡信息与策略、PIN 保护、智能双卡、Intent 执行 |
-| 公共层 / 基础能力 | `database/`、`common/`、`backup/`、`utils/`、`WorkSchedulerExtension/` | DataShare / 存储、公共组件、备份恢复、上报与工具 |
+### 与其它应用的关系
 
-### Ability 与 UI 场景
+SimCardManagement 与 **系统设置**、**SceneBoard**、**SimToolkits** 及电话子系统协同，自身不包含 Modem / RIL 实现，通过 TelephonyKit 间接操作 SIM / Radio / Data。
 
-事件由设置 / SceneBoard / Intent 拉起，经业务模型处理后更新 UI，并通过 TelephonyKit / DataShare 与系统协同：
+**调用方式**：
 
-![SimCardManagement Ability 与 UI 场景](./docs/figures/simcardmanagement_ability.png)
+- 系统设置通过 UIExtension Want 拉起 `com.ohos.simcardmanagement.MainAbility`，并可通过 `action.settings.search.path` 接入设置搜索。
+- SceneBoard 通过 `MobileDataChangeExtAbility` 嵌入移动数据切换与默认上网卡相关 UI。
+- SimToolkits 与主页 `SimToolkitsComponent` 协同完成 STK 入口展示与跳转。
+- 电话能力经 `simServiceProxy`、`radioServiceProxy` 等代理访问 TelephonyKit；数据相关辅助见 `dataServiceProxy`。
 
-**数据流概览**：
+**调用场景**：
 
-```text
-Settings / SceneBoard / Intent
-  → MainAbility / MobileDataChangeExtAbility
-  → pages (index / simProtection / smartDualCardDialog)
-  → SimCardModel / PinViewModel / IntentExecutorImpl
-  → simServiceProxy / radioServiceProxy / dataServiceProxy
-  → TelephonyKit / DataShare / Settings
-```
-
-### 部件与外部依赖
-
-部件内部按产品 / 特性 / 公共能力组织，通过 TelephonyKit、Settings、SceneBoard 完成跨进程协作：
-- 产品层：支持 phone 与 pad 两种设备形态。
-- 特性层：提供卡信息管理、默认数据卡、默认拨号卡、启停PIN/PUK、修改PIN、智慧双卡、STK联动、设置搜索等能力。
-- 公共层：封装 SIM代理、Radio代理、Data代理、数据库、工具类、备份恢复与 DFX 上报等基础能力。
-
-框架和服务层通过 TelephonyKit 对接 Telephony，通过 ArkUI 提供界面，通过 AbilityKit 管理 Ability 生命周期；外部与 Settings、SceneBoard 协作完成跨进程交互：
-
-![SimCardManagement 部件与 IPC](./docs/figures/simcardmanagement_ipc.png)
-
-### 模块说明
-
-| 模块 | 路径 | 说明 |
-| ---- | ---- | ---- |
-| AbilityStage | entry/src/main/ets/Application/ | 应用级生命周期入口 |
-| MainAbility | entry/src/main/ets/MainAbility/ | 主 UIExtension 与智能双卡对话框 Ability |
-| 页面 | entry/src/main/ets/pages/ | 主页、PIN 保护、智能双卡、锁屏相关页 |
-| 控制中心扩展 | entry/src/main/ets/uiExtensionAbility/ | MobileDataChangeExtAbility |
-| 业务模型 | entry/src/main/ets/model/ | SimCardModel、PinViewModel、电话代理封装 |
-| 意图能力源码 | entry/src/main/ets/insightintents/ | IntentExecutorImpl、适配器与 DefaultIntentBackgroundUiAbility |
-| 数据定义 | entry/src/main/ets/data/ | Infos、ResponseInfo 等数据结构 |
-| 数据访问 | entry/src/main/ets/database/ | DatabaseHelper / DataShare 访问 |
-| 公共组件 | entry/src/main/ets/common/ | 卡信息、默认卡、PIN、智能双卡等组件与工具 |
-| 备份恢复 | entry/src/main/ets/backup/ | BackupExtensionAbility 声明对应的 BackupExtension 实现 |
-| 定时上报 | entry/src/main/ets/WorkSchedulerExtension/ | ReporterWorkSchedulerAbility 统计上报 |
-| 工具 | entry/src/main/ets/utils/ | 设备、显示、上报等工具 |
+设置内 SIM 卡管理页、设置搜索、控制中心移动数据切换、智能双卡相关系统对话框等。
 
 ## 编译构建
 
-本工程为独立 HAP 应用工程，使用 Hvigor 构建。流水线将签名产物重命名为 `SimCardManagement.hap`，系统测试配置部署到 `/system/app/SimCardManagement/SimCardManagement.hap`。
-
-下图按“完整源码特性 → HAP / HAR 产物 → 设备部署”展开；Phone 与 Pad 共用同一个 `entry` HAP，当前没有独立 HAR。
-
-![SimCardManagement 编译部署](./docs/figures/simcardmanagement_build.png)
+本工程为独立 HAP 应用工程，使用 Hvigor 构建，产物为 `com.ohos.simcardmanagement` 系统应用包；流水线可将签名产物重命名为 `SimCardManagement.hap` 并预装至 `/system/app/SimCardManagement/`。
 
 ### 环境要求
 - OpenHarmony SDK（本工程 `compileSdkVersion` 为 23，`compatibleSdkVersion` / `targetSdkVersion` 为 20）
@@ -126,227 +78,257 @@ Settings / SceneBoard / Intent
 
 ### 编译命令
 
-在工程根目录执行：
+在工程根目录执行（需本机已配置 Hvigor 命令行 `hvigorw`，或使用 DevEco Studio / 流水线 `build.sh`）：
 
 ```bash
 hvigorw assembleHap --mode module -p product=default -p debuggable=false -p buildMode=release
 ```
 
-默认签名产物位于 `entry/build/default/outputs/default/entry-default-signed.hap`；`build.sh` 将其复制为同目录下的 `SimCardManagement.hap`。
-
-### 构建产物
-
-| 类型 | 产物 / 目标 | 说明 |
-| ---- | ----------- | ---- |
-| HAP | `entry-default-signed.hap` | `entry` 模块默认签名产物 |
-| HAP | `SimCardManagement.hap` | `build.sh` 重命名后的系统预装包 |
-| 测试 HAP | `SimCardManagementTest.hap`（模块 `entry@ohosTest`） | `packageTesting` 生成，测试配置从 `/data/local/tmp/` 安装 |
-| 自研 HAR | 无 | 当前没有独立 HAR 模块 |
-| 第三方测试 HAR | `@ohos/hypium` | `oh-package.json5` 中的测试框架依赖，不是本工程构建产物 |
-
-若作为 OpenHarmony 系统部件合入源码树，可参考平台统一构建方式，将本应用作为预置系统应用打包进镜像。
+默认签名产物位于 `entry/build/default/outputs/default/entry-default-signed.hap`；`build.sh` 可将其复制为同目录下的 `SimCardManagement.hap`。
 
 ## SimCardManagement 开发
 
-SimCardManagement 采用 **ArkTS** 语言开发，UI 基于 ArkUI Stage 模型，通过 `UIExtensionAbility` 嵌入设置 / 系统 UI，通过 TelephonyKit 代理完成 SIM 管理。可开发参考：[ArkUI 开发概述](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/ui/arkts-ui-development-overview.md)
+SimCardManagement 采用 **ArkTS** 语言开发，UI 基于 ArkUI Stage 模型。应用通过 `com.ohos.simcardmanagement.MainAbility`承载主界面，通过 `model/` 下代理封装 TelephonyKit，通过公共层 `common/components/` 完成各特性 UI。开发可参考：[ArkUI 开发概述](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/ui/arkts-ui-development-overview.md)
 
 ### 基于已有模块的开发
 
-适用场景：对已有能力做功能定制，例如调整默认卡策略 UI、扩展 PIN 交互、裁剪智能双卡逻辑等。
+适用场景：对已有能力做功能定制，例如调整卡信息编辑、启停 SIM 交互、SIM 卡保护流程、默认上网卡或默认拨号卡策略展示等。
 
-**对已有模块的功能调整与裁剪**
+以下列举一些常见的修改场景：
 
-1. 明确改动落点：按业务边界定位到 `model/`（策略与代理）、`pages/` / `common/components/`（UI）、`uiExtensionAbility/`（控制中心）或 `insightintents/`（意图）。
-2. 调整电话能力调用时：
-    - SIM 相关封装位于 `model/simServiceProxy.ets`；
-    - Radio / Data 相关封装位于 `model/radioServiceProxy.ets` / `model/dataServiceProxy.ets`；
-    - PIN 相关位于 `model/pinModel.ets` / `model/PinViewModel.ets`。
-3. 裁剪某项能力时：先移除页面 / 组件入口，再清理模型调用与测试用例，避免残留依赖。
+**场景1：编辑卡信息**
 
-例如，`SimServiceProxy` 将 TelephonyKit 的回调接口封装为 Promise，业务层只需传入卡槽 ID：
+   - 主页与导航位于 `entry/src/main/ets/pages/index.ets`
+   - 卡信息展示位于 `entry/src/main/ets/common/components/cardInfomation.ets`
+   - 编辑弹窗位于 `entry/src/main/ets/common/components/dialog/editSimInfoDialog.ets`
 
+例如，需在保存 SIM 名称前增加校验，可在 `setShowName` 中扩展逻辑：
 ```typescript
-export class SimServiceProxy {
-  private searchHasSimCard(slotId: number,
-    resolve: (value: boolean) => void = () => {},
-    reject: (error: BusinessError<void>) => void = () => {}) {
-    sim.hasSimCard(slotId, (error, data) => {
-      if (error) {
-        reject(error);
+    // editSimInfoDialog.ets
+    function setShowName(editInfo: EditSimInfo, onSetShowNameResult: (slotId: number) => void, retryCount: number = 0) {
+      // 【修改点】在此扩展名称校验、空值处理或自定义前置检查
+      if (!customValidateName(editInfo.newName)) {
         return;
       }
-      resolve(data);
-    });
-  }
-
-  hasSimCard(slotId = 0) {
-    return new Promise((resolve: (value: boolean) => void,
-      reject: (reason?: BusinessError) => void) => {
-      try {
-        this.searchHasSimCard(slotId, resolve, reject);
-      } catch (error) {
-        reject(error);
-      }
-    });
-  }
-}
+      ...
+      SimServiceProxy.setShowName(editInfo.slotId, editInfo.newName).then(() => {
+        onSetShowNameResult(editInfo.slotId);
+      })
+      ...
+    }
 ```
 
-**对已有 UI 进行修改**
+**场景2：启用/停用 SIM 卡**
 
-- 主入口为 `MainAbility`，主页面为 `pages/index.ets`。
-- PIN 保护页：`pages/simProtection.ets`；智能双卡：`pages/smartDualCardDialog.ets`。
-- 可复用组件位于 `common/components/`。
+   - 启停 UI 与状态刷新位于 `entry/src/main/ets/common/components/cardInfomation.ets`
+   - Telephony 封装位于 `entry/src/main/ets/model/simServiceProxy.ets`（`setSimActive` / `isSimActive`）
 
-主 UIExtension 在会话创建后把 `session` 写入局部状态，并加载主页：
-
+例如，需在启停成功后增加自定义提示，可在 `setSimActivated` 中扩展：
 ```typescript
-onSessionCreate(want: Want, session: UIExtensionContentSession) {
-  const localStorage = new LocalStorage({ session });
-  this.handleWantParams(want, localStorage);
-  session.loadContent('pages/index', localStorage);
-}
+    // cardInfomation.ets
+    setSimActivated(slotId: number, isActivated: boolean) {
+      ...
+      SimServiceProxy.setSimActive(slotId, isActivated).then(() => {
+        // 【修改点】启停成功后可在此扩展自定义提示或后续处理
+        // showCustomToast(slotId, isActivated);
+        ...
+        this.handleSetActivateEnd(slotId, true);
+      }).catch(() => {
+        this.handleSetActivateEnd(slotId, false);
+      });
+    }
+```
+
+**场景3：SIM 卡保护**
+
+   - 保护页位于 `entry/src/main/ets/pages/simProtection.ets`（`SimProtection` 组件，由主页 `NavPathStack` 导航进入）
+   - PIN 交互组件位于 `entry/src/main/ets/common/components/pinComponent.ets`
+   - 业务逻辑位于 `entry/src/main/ets/model/PinViewModel.ets`、`entry/src/main/ets/model/pinModel.ets`
+
+例如，保护能力与卡槽启停状态联动时，可复用 `SimServiceProxy.isSimActive`：
+```typescript
+    // 判断当前卡槽是否可用
+    const isActive = SimServiceProxy.isSimActive(slotId);
+```
+
+**场景4：默认移动数据选择**
+
+   - 默认上网卡 UI 位于 `entry/src/main/ets/common/components/defaultDataComponent.ets`
+   - 写入封装位于 `entry/src/main/ets/model/radioServiceProxy.ets`（`setPrimarySlotId`）
+   - 控制中心场景位于 `entry/src/main/ets/uiExtensionAbility/MobileDataChangeExtAbility.ets`
+
+例如，需在切换默认移动数据卡前新增自定义前置检查，可在 `setPrimarySlotId()` 中扩展：
+```typescript
+    // defaultDataComponent.ets
+    setPrimarySlotId(slotId: number) {
+      // 【修改点】在此扩展自定义前置检查
+      if (!this.customPreCheck(slotId)) {
+        return;
+      }
+      ...
+      setPrimarySlotId(slotId).then(() => {
+        this.onSetPrimarySlotIdFinished();
+      })
+      ...
+    }
+```
+
+**场景5：默认拨号卡设置**
+
+   - 主页入口与结果刷新位于 `entry/src/main/ets/pages/index.ets`
+   - 设置弹窗与写回位于 `entry/src/main/ets/common/components/dialog/selectDefaultVoiceDialog.ets`
+   - Telephony 封装位于 `entry/src/main/ets/model/simServiceProxy.ets`（`setDefaultVoiceSlotId`）
+
+例如，需在设置默认拨号卡成功后增加自定义提示，可在 `setDefaultVoiceSlotId` 中扩展：
+```typescript
+    // selectDefaultVoiceDialog.ets
+    export function setDefaultVoiceSlotId(slotId: number, onSetDefaultVoiceResult: (slotId: number) => void) {
+      ...
+      SimServiceProxy.setDefaultVoiceSlotId(slotId).then((res: boolean) => {
+        // 【修改点】设置成功后可在此扩展自定义提示
+        // showCustomToast(slotId);
+        onSetDefaultVoiceResult(slotId);
+      })
+      ...
+    }
 ```
 
 常用修改入口：
 
 | 目标 | 路径 |
-| ---- | ---- |
-| 主页面 | `pages/index.ets` |
-| PIN 保护 | `pages/simProtection.ets`、`model/PinViewModel.ets` |
-| 智能双卡 | `pages/smartDualCardDialog.ets`、`MainAbility/SmartDualCardDialogAbility.ets` |
-| 控制中心移动数据 | `uiExtensionAbility/MobileDataChangeExtAbility.ets` |
-| 意图执行 | `insightintents/IntentExecutorImpl.ets` |
+|------|------|
+| 应用主入口（UIExtension） | `entry/src/main/ets/MainAbility/MainAbility.ets` |
+| 应用首页 | `entry/src/main/ets/pages/index.ets` |
+| 编辑卡信息 | `entry/src/main/ets/common/components/cardInfomation.ets`、`common/components/dialog/editSimInfoDialog.ets` |
+| 启用/停用 SIM | `entry/src/main/ets/model/simServiceProxy.ets`、`common/components/cardInfomation.ets` |
+| SIM 卡保护 | `entry/src/main/ets/pages/simProtection.ets`、`model/PinViewModel.ets` |
+| 默认移动数据 | `entry/src/main/ets/common/components/defaultDataComponent.ets`、`model/radioServiceProxy.ets` |
+| 默认拨号卡 | `entry/src/main/ets/common/components/dialog/selectDefaultVoiceDialog.ets`、`model/simServiceProxy.ets` |
+| 控制中心移动数据 | `entry/src/main/ets/uiExtensionAbility/MobileDataChangeExtAbility.ets` |
+| Ability / 权限声明 | `entry/src/main/module.json5` |
+| 页面路由注册 | `entry/src/main/resources/base/profile/main_pages.json` |
 
-### 新特性开发
+### 新特性能力的开发
 
-适用场景：新增 SIM 管理策略、扩展设备形态交互、补充系统协同能力。
+适用场景：在现有 SIM 管理能力上扩展交互、补充系统协同入口或适配新设备形态。
 
-**步骤1：扩展业务模型与代理**
-1. 在 `model/` 中补充策略或代理封装。
-2. 如需跨进程能力，确认 TelephonyKit / Settings 接口可用。
-3. 补充对应单测或手动验证路径。
+> **说明**：当前工程为单 `entry` HAP 模块，产品入口与 Ability 均在 `entry` 中声明。新能力一般按产品层 / 特性层 / 公共层扩展；涉及 Telephony 的策略变更需同步确认权限与 TelephonyKit 接口。
 
-例如，在 `SimServiceProxy` 中封装默认语音卡设置，供页面直接调用：
+**场景1：扩展业务能力**
 
-```typescript
-export class SimServiceProxy {
-  setDefaultVoiceSlotId(slotId = 0) {
-    return new Promise((resolve: (value: boolean) => void,
-      reject: (reason?: BusinessError) => void) => {
-      try {
-        this.doSetDefaultVoiceSlotId(slotId, resolve, reject);
-      } catch (error) {
-        reject(error);
+1. 在 `model/` 中补充 TelephonyKit 代理或策略封装。
+2. 在 `common/components/` 或 `pages/` 中补充 UI 与交互。
+3. 如涉及持久化，在 `database/DatabaseHelper.ets` 或 Settings DataShare 协同路径中扩展。
+4. 在 `entry/src/ohosTest` 中补充对应 UT / 用例。
+5. 配置 / 确认 Ability 入口
+
+主 UIExtension、控制中心扩展、备份等已在 `entry/src/main/module.json5` 中声明，扩展能力时通常需确认 `mainElement`、extension 类型与权限：
+```json
+{
+  "module": {
+    "name": "entry",
+    "type": "entry",
+    "mainElement": "com.ohos.simcardmanagement.MainAbility",
+    "extensionAbilities": [
+      {
+        "name": "com.ohos.simcardmanagement.MainAbility",
+        "srcEntrance": "./ets/MainAbility/MainAbility.ets",
+        "type": "sys/commonUI"
+      },
+      {
+        "name": "MobileDataChangeExtAbility",
+        "srcEntry": "./ets/uiExtensionAbility/MobileDataChangeExtAbility.ets",
+        "type": "sys/commonUI",
+        "exported": true
       }
-    });
+    ]
   }
 }
 ```
 
-**步骤2：配置 / 确认 Ability 入口**
+**场景2：定制 UI**
 
-主入口与扩展在 `entry/src/main/module.json5` 中声明，扩展能力时通常需确认 `mainElement`、extension 类型与权限是否满足新场景。
+在完成业务能力与 Ability 配置后，按上一节方式扩展 `pages/index.ets`、各特性组件或控制中心页面即可。
 
-例如，主 UIExtension 与智能双卡弹窗使用两个 `sys/commonUI` 声明：
+若需新增独立页面：
 
-```json
-{
-  "extensionAbilities": [
-    {
-      "name": "com.ohos.simcardmanagement.MainAbility",
-      "srcEntrance": "./ets/MainAbility/MainAbility.ets",
-      "type": "sys/commonUI"
-    },
-    {
-      "name": "SmartDualCardDialogAbility",
-      "srcEntry": "./ets/MainAbility/SmartDualCardDialogAbility.ets",
-      "type": "sys/commonUI"
-    }
-  ]
-}
-```
-
-**步骤3：定制 UI**
-
-在 `pages/` 与 `common/components/` 中扩展页面或组件，并在 `resources/base/profile/main_pages.json` 的 `src` 数组中注册新页面（例如新增 `pages/<new_page>`）：
-
-```json
-{
-  "src": [
-    "pages/index",
-    "pages/smartDualCardDialog",
-    "common/components/mobileDataToggleDialog"
-  ]
-}
-```
-
-新页面可由 `MainAbility.onSessionCreate` 按场景 `loadContent` 拉起（见上文「对已有 UI 进行修改」）。
+1. 在 `entry/src/main/ets/pages/` 下新增页面文件；
+2. 在 `entry/src/main/resources/base/profile/main_pages.json` 的 `src` 数组中注册；
+3. 由 `MainAbility.onSessionCreate` 的 `session.loadContent` 或主页 `NavPathStack` 拉起。
 
 ## 目录
+
 ```text
 simcardmanagement
 ├─AppScope                              # 应用级配置与多语言资源
 │  ├─app.json5                          # bundleName、版本号等
-│  └─resources/                         # 全局 string 等资源
+│  └─resources/                         # 全局字符串 / 图标等资源
 ├─docs                                  # 文档与架构图
-│  └─figures/                           # 架构图
-│     ├─simcardmanagement_in_os.png           # 系统中定位（中文）
-│     ├─simcardmanagement_architecture.png    # 分层架构（中文）
-│     ├─simcardmanagement_ability.png         # Ability 与 UI 场景（中文）
-│     ├─simcardmanagement_ipc.png             # 部件与外部依赖（中文）
-│     ├─simcardmanagement_build.png           # 编译部署（中文）
-│     ├─simcardmanagement_in_os_en.png        # 系统中定位（英文）
-│     ├─simcardmanagement_architecture_en.png # 分层架构（英文）
-│     ├─simcardmanagement_ability_en.png      # Ability 与 UI 场景（英文）
-│     ├─simcardmanagement_ipc_en.png          # 部件与外部依赖（英文）
-│     └─simcardmanagement_build_en.png        # 编译部署（英文）
-├─entry                                 # 唯一 HAP 模块
-│  ├─src/main/                          # 主源码目录
-│  │  ├─ets/                            # ArkTS 业务源码
-│  │  │  ├─Application/                 # AbilityStage
-│  │  │  ├─MainAbility/                 # MainAbility / SmartDualCardDialogAbility
-│  │  │  ├─uiExtensionAbility/          # MobileDataChangeExtAbility（控制中心）
-│  │  │  ├─pages/                       # 主页面、PIN、智能双卡等
-│  │  │  ├─data/                        # Infos、ResponseInfo 等数据结构
-│  │  │  ├─model/                       # 业务模型与 Telephony 代理
-│  │  │  ├─insightintents/              # Insight Intent 源码、适配器与后台 Ability
-│  │  │  ├─database/                    # DataShare / 本地存储
-│  │  │  ├─common/                      # 组件、配置、数据结构、工具
-│  │  │  ├─backup/                      # BackupExtension 备份恢复
-│  │  │  ├─WorkSchedulerExtension/      # 定时统计上报
-│  │  │  └─utils/                       # 设备、显示、上报等工具
-│  │  ├─resources/                      # 模块资源、多语言、深色模式等
-│  │  └─module.json5                    # Ability、权限声明
-│  ├─src/ohosTest/                      # Hypium 自动化测试与测试页面
-│  ├─build-profile.json5                # 模块级构建配置
-│  └─obfuscation-rules.txt              # 混淆规则
+│  └─figures/                           # 架构说明图
+├─entry                                 # 产品层与业务源码
+│  └─src/main/
+│     ├─ets/
+│     │  ├─Application/                 # AbilityStage
+│     │  ├─MainAbility/                 # MainAbility、SmartDualCardDialogAbility
+│     │  ├─pages/                       # 主页 index、SIM 卡保护 simProtection、smartDualCardDialog 等
+│     │  ├─uiExtensionAbility/          # 特性层：SceneBoard 移动数据扩展
+│     │  ├─model/                       # 特性层：Sim 卡模型与 Telephony 代理
+│     │  ├─common/                      # 公共层：公共组件与工具
+│     │  │  ├─components/               # 卡信息、默认数据、PIN、拨号卡、SimToolkits 等公共组件
+│     │  │  ├─utils/                    # 常量、Settings 监听、认证工具等
+│     │  │  ├─config/                   # 卡信息相关配置数据
+│     │  │  └─struct/                   # 卡信息等数据结构
+│     │  ├─data/                        # Infos、ResponseInfo 等数据结构
+│     │  ├─database/                    # 公共层：数据库
+│     │  ├─backup/                      # 公共层：备份恢复
+│     │  ├─insightintents/              # 特性层：意图执行
+│     │  ├─WorkSchedulerExtension/      # 统计上报扩展
+│     │  └─utils/                       # 公共层：工具类
+│     ├─resources/                      # 模块资源、设置搜索配置、多语言等
+│     └─module.json5                    # Ability、权限声明
+│  └─src/ohosTest/                      # Hypium 自动化测试
 ├─hvigor                                # 构建工具配置
 ├─signature                             # 签名证书与 profile
-├─build.sh                              # 流水线构建、测试打包与 HAP 重命名脚本
+├─build.sh                              # 流水线构建与 HAP 重命名
 ├─build-profile.json5                   # 工程级 SDK / 签名 / product 配置
-├─oh-package.json5                      # 依赖与包信息
+├─oh-package.json5
 ├─OAT.xml                               # 开源合规审计
-├─LICENSE                               # 开源许可证
-├─README_zh.md                          # 中文说明
-└─REAMDE.md                          # 英文说明
+├─LICENSE
+├─README.md                             # 英文说明文档
+└─README_zh.md                          # 中文说明文档
 ```
 
 ## 约束
-- 语言版本：ArkTS
-- 运行形态：系统预置应用（`com.ohos.simcardmanagement`），依赖 TelephonyKit 及系统特权权限
-- 设备类型：`default`、`tablet`（见 `module.json5`）
-- 签名要求：需使用系统签名 profile
-- 模块形态：仅有一个 `entry` HAP；Phone / Pad 是设备形态，不是独立 HAP
-- Insight Intent：仓内已提供源码和 profile 文件，但需在产品集成时确认 profile 已打入 HAP
-- 本仓不包含 RIL / Modem 源码；通过 TelephonyKit 间接操作 SIM / Radio / Data
+
+- **语言版本**：ArkTS
+- **运行形态**：系统预置应用（`com.ohos.simcardmanagement`），依赖 TelephonyKit（`@ohos.telephony.sim` / `radio` / `data` / `call`）及系统特权权限；**不包含** RIL / Modem 实现
+- **设备类型**：手机、平板（见 `entry/src/main/module.json5`）
+- **签名要求**：须使用系统签名 profile（见 `signature/simcardmanagement.p7b`）
+- **权限**：SIM 卡管理主要权限如下（见 `entry/src/main/module.json5` 的 `requestPermissions`；部分 extension 另声明 `SET_TELEPHONY_STATE`）
+
+  | 权限 | 授权方式 | 使用场景                                        |
+  |------|---------|---------------------------------------------|
+  | ohos.permission.GET_TELEPHONY_STATE | 系统授权 | 查询 SIM / 网络 / 通话状态                          |
+  | ohos.permission.SET_TELEPHONY_STATE | 系统授权 | 设置默认卡、SIM 启停等电话策略                           |
+  | ohos.permission.GET_NETWORK_INFO | 用户授权 | 网络状态与策略判断                                   |
+  | ohos.permission.USE_USER_IDM | 用户授权 | 用户身份认证（SIM 卡保护等）                            |
+  | ohos.permission.ACCESS_BIOMETRIC | 用户授权 | 生物识别认证                                      |
+  | ohos.permission.PRIVACY_WINDOW | 系统授权 | 隐私窗口（敏感界面）                                  |
+  | ohos.permission.ACCESS_SYSTEM_SETTINGS | 系统授权 | 读取系统设置项                                     |
+  | ohos.permission.MANAGE_SETTINGS | 系统授权 | 移动网络 / 双卡等相关设置读写                            |
+  | ohos.permission.MANAGE_SECURE_SETTINGS | 系统授权 | 安全相关设置项                                     |
+  | ohos.permission.GET_BUNDLE_INFO | 系统授权 | 查询应用包信息（STK 联动常量包名为 `com.ohos.simtoolkits`） |
+
+- **外部依赖**：系统设置（`com.ohos.settings`）负责主入口嵌入；SceneBoard 负责控制中心扩展；SimToolkits STK 跳转常量包名为 `com.ohos.simtoolkits`（见 `SimToolkitsComponent`；产品侧需与实际 STK 应用 `bundleName` 保持一致）；Telephony 子系统提供底层能力
 
 ## 参与贡献
 
 欢迎广大开发者贡献代码、文档等，具体的贡献流程和方式请参见[参与贡献](https://gitcode.com/openharmony/docs/blob/master/zh-cn/contribute/%E5%8F%82%E4%B8%8E%E8%B4%A1%E7%8C%AE.md)。
 
 ## 相关仓
-- [telephony_core_service](https://gitcode.com/openharmony/telephony_core_service)（SIM / Radio 核心服务）
-- [telephony_telephony_data](https://gitcode.com/openharmony/telephony_telephony_data)（电话数据与 DataShare 服务）
-- [applications_settings](https://gitcode.com/openharmony/applications_settings)（系统设置入口）
-- [window_scene_board](https://gitcode.com/openharmony-sig/window_scene_board)（控制中心与窗口场景）
+
+[**applications_settings**](https://gitcode.com/openharmony/applications_settings)
+
+[**window_scene_board**](https://gitcode.com/openharmony/window_scene_board)
+
+[**simtoolkits**](https://gitcode.com/openharmony-sig/applications_simtoolkits.git)

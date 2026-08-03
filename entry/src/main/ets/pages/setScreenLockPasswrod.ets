@@ -29,7 +29,7 @@ export function SetScreenLockPasswordBuilder(): void {
 export default struct SetScreenLockPassword {
   @Consume('pageInfos') pageInfos: NavPathStack
   private want: Want = {
-    bundleName: 'com.oh.settings',
+    bundleName: 'com.ohos.settings',
     abilityName: 'PasswordSettingExtensionAbility',
     parameters: {
       'ability.want.params.uiExtensionType': 'sysDialog/common',
