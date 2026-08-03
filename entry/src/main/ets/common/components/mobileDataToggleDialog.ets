@@ -863,8 +863,8 @@ export default struct MobileDataToggleDialog {
       LogUtils.i(TAG, 'click on more settings');
       let context = getContext(this) as common.UIAbilityContext;
       let want: Want = {
-        bundleName: 'com.oh.settings',
-        abilityName: 'com.oh.settings.MainAbility',
+        bundleName: 'com.ohos.settings',
+        abilityName: 'com.ohos.settings.MainAbility',
         uri: 'sim_card_management_entry'
       };
       context.startAbility(want).then(() => {

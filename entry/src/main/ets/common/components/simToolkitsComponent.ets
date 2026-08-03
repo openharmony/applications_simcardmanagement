@@ -25,7 +25,7 @@ import { simIdFormat } from '../utils/SimIdFormat';
 import { TextArrowOption } from './TextArrowOption';
 
 const IS_HAVE_MAIN_MENU_PROP_KEY = 'HwSimToolkits_hasMainMenu_';
-const STK_PACKAGE_NAME = 'com.oh.simtoolkits';
+const STK_PACKAGE_NAME = 'com.ohos.simtoolkits';
 const STK_ABILITY_NAME = 'EntryAbility';
 const STK_PAGE_URL = 'pages/Index';
 const EVENT_PUBLISHER_PERMISSION = 'ohos.permission.SET_TELEPHONY_STATE'

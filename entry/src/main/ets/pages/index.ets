@@ -816,7 +816,7 @@ struct Index {
   private async sendAccessibilityEventInfo(info: string) {
     let eventInfo: accessibility.EventInfo = ({
       type: 'announceForAccessibility',
-      bundleName: 'com.oh.simcardmanagement',
+      bundleName: 'com.ohos.simcardmanagement',
       triggerAction: 'common',
       textAnnouncedForAccessibility: info
     });

@@ -37,7 +37,7 @@ class ReportOperate {
 
 const TAG = 'ReportUtil';
 const DOMAIN = 'SIM_UE';
-const packageName = 'com.oh.simcardmanagement';
+const packageName = 'com.ohos.simcardmanagement';
 const REPEAT_CYCLE_TIME = 1000 * 60 * 60 * 24 * 7; // 1 week
 
 interface GeneratedObjectLiteralInterface_1 {
