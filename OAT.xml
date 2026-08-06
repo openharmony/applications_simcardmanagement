@@ -25,9 +25,17 @@
 			</policy>
 		</policylist>
 		<filefilterlist>
-			<filefilter name="defaultFilter" desc="Files not to check" >
-				<filteritem type="filename" name="*.png|*.PNG|*.jpg|*.jpeg|*.webp" desc="self developed image"/>
-				<filteritem type="filename" name="*.json5" desc="The JSON does not support comments"/>
+			<filefilter name="binaryFileTypePolicyFilter" desc="Filters for binary file policies">
+				<filteritem type="filepath" name="AppScope/resources/base/media/app_icon.png" desc="self developed image"/>
+				<filteritem type="filepath" name="entry/src/main/resources/base/media/ic_Radiobtn_on.png" desc="self developed image"/>
+				<filteritem type="filepath" name="entry/src/main/resources/base/media/ic_Radiobtn_off.png" desc="self developed image"/>
+				<filteritem type="filepath" name="entry/src/main/resources/base/media/next_icon.png" desc="self developed image"/>
+				<filteritem type="filepath" name="entry/src/main/resources/base/media/phone.png" desc="self developed image"/>
+				<filteritem type="filepath" name="entry/src/main/resources/base/media/phoneOff.png" desc="self developed image"/>
+				<filteritem type="filepath" name="entry/src/main/resources/base/media/redact.png" desc="self developed image"/>
+				<filteritem type="filepath" name="entry/src/main/resources/base/media/redactOff.png" desc="self developed image"/>
+				<filteritem type="filepath" name="docs/figures/simcardmanagement.png" desc="self developed image"/>
+				<filteritem type="filepath" name="docs/figures/simcardmanagement_en.png" desc="self developed image"/>
 			</filefilter>
 		</filefilterlist>
 	</oatconfig>
