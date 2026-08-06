@@ -38,19 +38,26 @@ The overall structure is divided into product layer, feature layer, and common l
 
 | Layer | Main directories / components | Description |
 | ----- | --------------------------- | ----------- |
-| Product layer | `entry` | Phone / tablet forms |
-| Feature layer | `model/`, `pages/`, `uiExtensionAbility/`, `insightintents/` | Edit card info, enable/disable SIM, SIM protection, default mobile data, default dialing card |
-| Common layer | `database/`, `common/`, `backup/`, `utils/` | Database, common components, backup/restore, utility classes |
+| Product layer | `entry` (`Application/`, `MainAbility/`, `module.json5`) | Phone / tablet form |
+| Feature layer | `pages/index`, `common/components/cardInfomation`, `common/components/dialog/editSimInfoDialog`, `model/simServiceProxy` | Edit card info |
+| Feature layer | `common/components/cardInfomation`, `model/simServiceProxy`, `insightintents/` | Enable/Disable SIM |
+| Feature layer | `pages/simProtection`, `common/components/pinComponent`, `model/PinViewModel`, `model/pinModel` | SIM protection |
+| Feature layer | `common/components/defaultDataComponent`, `model/radioServiceProxy`, `uiExtensionAbility/MobileDataChangeExtAbility`, `insightintents/` | Default mobile data |
+| Feature layer | `pages/index`, `common/components/dialog/selectDefaultVoiceDialog`, `model/simServiceProxy`, `insightintents/` | Default dialing card |
+| Common layer | `database/` (`DatabaseHelper`) | Database |
+| Common layer | `common/` (`components/`, `utils/`, `config/`, `struct/`) | Shared components |
+| Common layer | `backup/` (`BackupExtension`, `CopyDbDataHelper`) | Backup/restore |
+| Common layer | `utils/` | Utilities |
 
-**Feature layer module description**:
+**Feature layer capability description**:
 
-| Core capability | Modules | Description |
+| Core capability | Key paths | Description |
 | --------------- | ------- | ----------- |
-| Edit card info | `pages/index.ets`, `common/components/cardInfomation.ets`, `common/components/dialog/editSimInfoDialog.ets`, `model/simServiceProxy.ets` | Card info display and name/number editing |
+| Edit card info | `common/components/cardInfomation.ets`, `common/components/dialog/editSimInfoDialog.ets` | Card info display and name/number editing |
 | Enable/Disable SIM | `common/components/cardInfomation.ets`, `model/simServiceProxy.ets` | `isSimActive` / `setSimActive` wrappers and enable/disable UI |
-| SIM protection | `pages/simProtection.ets`, `common/components/pinComponent.ets`, `model/pinModel.ets`, `model/PinViewModel.ets` | SIM protection page and PIN-related interactions |
-| Default mobile data selection | `common/components/defaultDataComponent.ets`, `model/radioServiceProxy.ets`, `uiExtensionAbility/MobileDataChangeExtAbility.ets` | Default data card selection and control-center linkage |
-| Default dialing card settings | `pages/index.ets`, `common/components/dialog/selectDefaultVoiceDialog.ets`, `model/simServiceProxy.ets` | Default voice card query and settings |
+| SIM protection | `pages/simProtection.ets`, `common/components/pinComponent.ets` | SIM protection page and PIN-related interactions |
+| Default mobile data selection | `common/components/defaultDataComponent.ets`, `uiExtensionAbility/MobileDataChangeExtAbility.ets` | Default data card selection and control-center linkage |
+| Default dialing card settings | `common/components/dialog/selectDefaultVoiceDialog.ets`, `model/simServiceProxy.ets` | Default voice card query and settings |
 
 ### Relationship with Other Applications
 
@@ -67,12 +74,21 @@ SimCardManagement works with **Settings**, **SceneBoard**, **SimToolkits**, and 
 
 SIM management page inside Settings, Settings search, control-center mobile data switching, smart dual-card related system dialogs, and similar flows.
 
+**External interfaces**:
+
+| Interface type | Interface identifier | Description |
+|------|------|------|
+| UIExtension (sys/commonUI) | `com.ohos.simcardmanagement.MainAbility` | Main Settings entry launches the SIM management page via Want |
+| UIExtension (sys/commonUI) | `SmartDualCardDialogAbility` | Entry for smart dual-card related system dialogs |
+| UIExtension (sys/commonUI) | `MobileDataChangeExtAbility` | Extension entry for mobile-data switching in SceneBoard control center |
+| Metadata configuration | `action.settings.search.path` | Settings search path metadata used by Settings to locate and jump to this app capability |
+
 ## Build
 
 This is a standalone HAP application project built with Hvigor. The product is the `com.ohos.simcardmanagement` system application package. The pipeline may rename the signed artifact to `SimCardManagement.hap` and preinstall it under `/system/app/SimCardManagement/`.
 
 ### Environment Requirements
-- OpenHarmony SDK (`compileSdkVersion` is 23; `compatibleSdkVersion` / `targetSdkVersion` are 20)
+- OpenHarmony SDK (`compileSdkVersion` / `compatibleSdkVersion` / `targetSdkVersion` are all 26)
 - DevEco Studio or command-line Hvigor toolchain
 - System signing certificates (see `signature/`)
 
@@ -265,23 +281,23 @@ simcardmanagement
 │  └─resources/                         # Global strings / icons and other resources
 ├─docs                                  # Docs and architecture figures
 │  └─figures/                           # Architecture figures
-├─entry                                 # Product layer and business source
+├─entry                                 # Product layer: app entry and business source
 │  └─src/main/
 │     ├─ets/
-│     │  ├─Application/                 # AbilityStage
-│     │  ├─MainAbility/                 # MainAbility, SmartDualCardDialogAbility
-│     │  ├─pages/                       # Home index, SIM protection simProtection, smartDualCardDialog, and so on
-│     │  ├─uiExtensionAbility/          # Feature layer: SceneBoard mobile-data extension
-│     │  ├─model/                       # Feature layer: SIM model and Telephony proxies
-│     │  ├─common/                      # Common layer: common components and utilities
-│     │  │  ├─components/               # Card info, default data, PIN, dialing card, SimToolkits, and other common components
+│     │  ├─Application/                 # Product layer: AbilityStage lifecycle entry
+│     │  ├─MainAbility/                 # Product layer: MainAbility and SmartDualCardDialogAbility
+│     │  ├─pages/                       # Feature layer: pages for card info editing, SIM protection, and default voice card
+│     │  ├─uiExtensionAbility/          # Feature layer: default mobile-data switching extension
+│     │  ├─model/                       # Feature layer: SIM/Radio business models and Telephony proxies
+│     │  ├─insightintents/              # Feature layer: intent execution entry
+│     │  ├─common/                      # Common layer: shared components and utilities across features
+│     │  │  ├─components/               # Common layer: card info, default data, PIN, dialing card, and SimToolkits components
 │     │  │  ├─utils/                    # Constants, Settings listeners, auth utilities, and so on
 │     │  │  ├─config/                   # Card-info related configuration data
 │     │  │  └─struct/                   # Card-info related data structures
-│     │  ├─data/                        # Infos, ResponseInfo, and other data structures
+│     │  ├─data/                        # Common layer: Infos, ResponseInfo, and other data structures
 │     │  ├─database/                    # Common layer: database
 │     │  ├─backup/                      # Common layer: backup/restore
-│     │  ├─insightintents/              # Feature layer: intent execution
 │     │  ├─WorkSchedulerExtension/      # Reporting extension
 │     │  └─utils/                       # Common layer: utility classes
 │     ├─resources/                      # Module resources, Settings search config, multi-language, and so on
@@ -290,7 +306,7 @@ simcardmanagement
 ├─hvigor                                # Build tool configuration
 ├─signature                             # Signing certificates and profile
 ├─build.sh                              # Pipeline build and HAP rename
-├─build-profile.json5                   # Project-level SDK / signing / product configuration
+├─build-profile.json5                   # Project-level configuration
 ├─oh-package.json5
 ├─OAT.xml                               # Open-source compliance audit
 ├─LICENSE
@@ -298,26 +314,28 @@ simcardmanagement
 └─README_zh.md                          # Chinese README
 ```
 
+> Note: This project does not provide `bundle.json`. Module and product build information is defined in `build-profile.json5` and `entry/src/main/module.json5`.
+
 ## Constraints
 
 - **Language**: ArkTS
 - **Runtime form**: Pre-installed system application (`com.ohos.simcardmanagement`), depends on TelephonyKit (`@ohos.telephony.sim` / `radio` / `data` / `call`) and system privileged permissions; **does not include** RIL / Modem implementation
 - **Device types**: Phone and tablet (see `entry/src/main/module.json5`)
 - **Signing**: Requires a system signing profile (see `signature/simcardmanagement.p7b`)
-- **Permissions**: Main permissions for SIM management are as follows (see `requestPermissions` in `entry/src/main/module.json5`; some extensions also declare `SET_TELEPHONY_STATE`)
+- **Permissions**: The following are the main permissions declared in `entry/src/main/module.json5` and used by this project capability chain (`SET_TELEPHONY_STATE` is also declared in extension `permissions`)
 
   | Permission | Grant mode | Usage |
   | ---------- | ---------- | ----- |
-  | ohos.permission.GET_TELEPHONY_STATE | System grant | Query SIM / network / call state |
-  | ohos.permission.SET_TELEPHONY_STATE | System grant | Set default cards, SIM enable/disable, and other telephony policies |
-  | ohos.permission.GET_NETWORK_INFO | User grant | Network state and policy decisions |
-  | ohos.permission.USE_USER_IDM | User grant | User identity authentication (SIM protection, and so on) |
-  | ohos.permission.ACCESS_BIOMETRIC | User grant | Biometric authentication |
-  | ohos.permission.PRIVACY_WINDOW | System grant | Privacy window (sensitive UI) |
-  | ohos.permission.ACCESS_SYSTEM_SETTINGS | System grant | Read system settings |
-  | ohos.permission.MANAGE_SETTINGS | System grant | Read/write mobile network / dual-SIM related settings |
-  | ohos.permission.MANAGE_SECURE_SETTINGS | System grant | Security-related settings |
-  | ohos.permission.GET_BUNDLE_INFO | System grant | Query bundle info (STK jump constant package name is `com.ohos.simtoolkits`) |
+  | ohos.permission.GET_TELEPHONY_STATE | System grant | Query SIM state, default-card state, and call-related state |
+  | ohos.permission.SET_TELEPHONY_STATE | System grant | Enable/disable SIM and write default voice/data card |
+  | ohos.permission.GET_NETWORK_INFO | User grant | Network-state checks before/after default mobile-data switching |
+  | ohos.permission.USE_USER_IDM | User grant | User identity authentication in SIM protection flows |
+  | ohos.permission.ACCESS_BIOMETRIC | User grant | Biometric authentication in SIM protection flows |
+  | ohos.permission.PRIVACY_WINDOW | System grant | Privacy-window capability for sensitive pages such as SIM protection |
+  | ohos.permission.ACCESS_SYSTEM_SETTINGS | System grant | Read system settings (including Settings-search collaboration) |
+  | ohos.permission.MANAGE_SETTINGS | System grant | Read/write dual-SIM and mobile-network related settings |
+  | ohos.permission.MANAGE_SECURE_SETTINGS | System grant | Read/write security-related settings |
+  | ohos.permission.GET_BUNDLE_INFO | System grant | Query linked app bundle information (for example `com.ohos.simtoolkits`) |
 
 - **External dependencies**: Settings (`com.ohos.settings`) embeds the main entry; SceneBoard hosts the control-center extension; the SimToolkits STK jump constant package name is `com.ohos.simtoolkits` (see `SimToolkitsComponent`; the product must keep it aligned with the actual STK app `bundleName`); the Telephony subsystem provides underlying capabilities
 
@@ -328,7 +346,5 @@ Contributions of code and documentation are welcome. For the contribution proces
 ## Related Repositories
 
 [**applications_settings**](https://gitcode.com/openharmony/applications_settings)
-
-[**window_scene_board**](https://gitcode.com/openharmony/window_scene_board)
 
 [**simtoolkits**](https://gitcode.com/openharmony-sig/applications_simtoolkits.git)
