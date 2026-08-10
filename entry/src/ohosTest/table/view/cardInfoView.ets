@@ -115,6 +115,7 @@ export default struct eSimSet {
   private plmnSpns: string[] = ['', ''];
   private isActivating1: boolean = false;
   private isActivating2: boolean = false;
+  private isEditSimInfoDialogShowing: boolean = false;
   private disablePrimaryDialogTitle: string | Resource = '';
   private disablePrimaryDialogMessage: string | Resource = '';
   private phoneNumberTimeoutId: number[] = [0, 0];
@@ -143,7 +144,7 @@ export default struct eSimSet {
   private onAccountInfoChanged: Callback<void> = () => {
     LogUtils.i(TAG, 'onAccountInfoChanged');
     this.updateOperatorName();
-    this.editSimInfoDialog.close();
+    this.closeEditSimInfoDialog();
     this.disablePrimaryCardDialog.close();
     this.pinViewModel.closeAllDialogs();
   };
@@ -175,6 +176,7 @@ export default struct eSimSet {
           value: $r('app.string.cancel'),
           buttonStyle: ButtonStyleMode.TEXTUAL,
           action: () => {
+            this.onEditSimInfoDialogDismissed();
             ReportUtil.getInstance().reportCardInfoEditSelected(this.editInfo.slotId, false);
           }
         },
@@ -182,6 +184,7 @@ export default struct eSimSet {
           value: $r('app.string.confirm'),
           buttonStyle: ButtonStyleMode.TEXTUAL,
           action: () => {
+            this.onEditSimInfoDialogDismissed();
             setSimInfo(this.editInfo,
               (slotId: number) => {
                 this.getShowName(slotId)
@@ -194,7 +197,10 @@ export default struct eSimSet {
       ]
     }),
     autoCancel: false,
-    showInSubWindow: true
+    showInSubWindow: true,
+    onWillDismiss: () => {
+      this.onEditSimInfoDialogDismissed();
+    }
   });
   //Dialog when the activation status is being set.
   setSimActiveLoadingDialog: CustomDialogController = new CustomDialogController({
@@ -435,7 +441,20 @@ export default struct eSimSet {
     });
   }
 
+  private onEditSimInfoDialogDismissed() {
+    this.isEditSimInfoDialogShowing = false;
+  }
+
+  private closeEditSimInfoDialog() {
+    this.onEditSimInfoDialogDismissed();
+    this.editSimInfoDialog.close();
+  }
+
   private editSimInfo(item: CardInfoStruct) {
+    if (this.isEditSimInfoDialogShowing) {
+      LogUtils.i(TAG, 'editSimInfo ignored, dialog is showing');
+      return;
+    }
     LogUtils.i(TAG, 'onclick edit slotId:' + JSON.stringify(item.id));
     this.title = item.title;
     this.curEditList = item;
@@ -443,6 +462,7 @@ export default struct eSimSet {
     this.editInfo.slotId = item.id;
     this.editInfo.setSimInfo?.(item.id, item.id === 0 ? this.cardInfoSimName1 : this.cardInfoSimName2,
       this.phoneNumber);
+    this.isEditSimInfoDialogShowing = true;
     this.editSimInfoDialog.open();
     ReportUtil.getInstance().reportCardInfoEditClick(item.id);
   }
@@ -489,7 +509,7 @@ export default struct eSimSet {
 
   private onAirplaneModeChanged() {
     if (this.isAirPlaneMode) {
-      this.editSimInfoDialog.close()
+      this.closeEditSimInfoDialog();
       this.disablePrimaryCardDialog.close();
       this.pinViewModel.closeAllDialogs();
     }
