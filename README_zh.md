@@ -52,12 +52,12 @@ SimCardManagement 采用分层与模块化设计，按产品入口、业务特�
 
 | 主要能力 | 关键路径 | 说明（含 TelephonyKit / 拉起接口） |
 |--------|----------------|------|
-| 编辑卡信息 | `common/components/cardInfomation.ets`、`dialog/editSimInfoDialog.ets` | 卡信息展示与名称/号码编辑；写回调用 `@ohos.telephony.sim` 的 `setShowName` / `setShowNumber`，读取可用 `getShowName` / `getShowNumber` / `getSimSpn` 等 |
-| 启用/停用 SIM 卡 | `common/components/cardInfomation.ets`、`model/simServiceProxy.ets` | 启停 UI；查询 `isSimActive`；写入经 `SimServiceProxy.setSimActive` → `activateSim` / `deactivateSim` |
-| SIM 卡保护 | `pages/simProtection.ets`、`common/components/pinComponent.ets`、`model/pinModel.ets` | PIN 页与交互；`pinModel` 经 `@kit.TelephonyKit` 调用 `getLockState` / `setLockState`、`unlockPin` / `unlockPuk`、`alterPin` |
-| 默认移动数据选择 | `common/components/defaultDataComponent.ets`、`common/components/mobileDataToggleDialog.ets`、`uiExtensionAbility/MobileDataChangeExtAbility.ets`、`model/radioServiceProxy.ets` | 默认上网卡：`radio.getPrimarySlotId` / `setPrimarySlotId`；控制中心开关：`data.isCellularDataEnabled` / `enableCellularData`；通话中限制切换时用 `call.getCallState` 与 `observer` 通话状态回调 |
+| 编辑卡信息 | `common/components/cardInfomation.ets`、`dialog/editSimInfoDialog.ets` | 卡信息展示与名称/号码编辑；写回调用 `@ohos.telephony.sim` 的 `setShowName` 、 `setShowNumber`，读取可用 `getShowName`、`getShowNumber`、`getSimSpn` 等 |
+| 启用/停用 SIM 卡 | `common/components/cardInfomation.ets`、`model/simServiceProxy.ets` | 启停 UI；查询 `isSimActive`；写入经 `SimServiceProxy.setSimActive` → `activateSim` 、 `deactivateSim` |
+| SIM 卡保护 | `pages/simProtection.ets`、`common/components/pinComponent.ets`、`model/pinModel.ets` | PIN 页与交互；`pinModel` 经 `@kit.TelephonyKit` 调用 `getLockState` / `setLockState`、`unlockPin` 、 `unlockPuk`、`alterPin` |
+| 默认移动数据选择 | `common/components/defaultDataComponent.ets`、`common/components/mobileDataToggleDialog.ets`、`uiExtensionAbility/MobileDataChangeExtAbility.ets`、`model/radioServiceProxy.ets` | 默认上网卡：`radio.getPrimarySlotId` / `setPrimarySlotId`；控制中心开关：`data.isCellularDataEnabled` 、 `enableCellularData`；通话中限制切换时用 `call.getCallState` 与 `observer` 通话状态回调 |
 | 默认拨号卡设置 | `common/components/dialog/selectDefaultVoiceDialog.ets`、`model/simServiceProxy.ets` | 默认语音卡设置弹窗；核心调用 `@ohos.telephony.sim` 的 `getDefaultVoiceSlotId` / `setDefaultVoiceSlotId` |
-| STK 联动 | `common/components/simToolkitsComponent.ets` | STK 入口展示与跳转；调用 `startAbility` 拉起 `com.ohos.simtoolkits` / `EntryAbility`（参数含 `pageUrl`、`slotId`） |
+| STK 联动 | `common/components/simToolkitsComponent.ets` | STK 入口展示与跳转；调用 `startAbility` 拉起 `com.ohos.simtoolkits` 、 `EntryAbility`（参数含 `pageUrl`、`slotId`） |
 
 **公共层说明**：
 
@@ -78,18 +78,17 @@ SimCardManagement 与 **系统设置**、**SceneBoard**、**SimToolkits** 及电
 - 系统设置通过 UIExtension Want 拉起 `com.ohos.simcardmanagement.MainAbility`，并可通过 `action.settings.search.path` 接入设置搜索。
 - SceneBoard 通过 `MobileDataChangeExtAbility` 嵌入移动数据切换与默认上网卡相关 UI。
 - SimToolkits：主页 `SimToolkitsComponent` 调用 `startAbility`（`bundleName`=`com.ohos.simtoolkits`，`abilityName`=`EntryAbility`）拉起 STK。
-- 电话相关读写见下文 **Telephony 子系统联动**；智能双卡开关等部分策略走 **Settings**（`@ohos.settings`），不经 Telephony 写卡。
+- 电话相关读写见下文 **Telephony 子系统联动**。
 
 **调用场景**：
 
-设置内 SIM 卡管理页、设置搜索、控制中心移动数据切换、智能双卡相关系统对话框、STK 入口跳转等。
+设置内 SIM 卡管理页、设置搜索、控制中心移动数据切换、STK 入口跳转等。
 
 **对外接口**：
 
 | 接口类型 | 接口标识 | 说明 |
 |------|------|------|
 | UIExtension（sys/commonUI） | `com.ohos.simcardmanagement.MainAbility` | 系统设置主入口通过 Want 拉起 SIM 卡管理页面 |
-| UIExtension（sys/commonUI） | `SmartDualCardDialogAbility` | 智能双卡相关系统对话框入口 |
 | UIExtension（sys/commonUI） | `MobileDataChangeExtAbility` | SceneBoard 控制中心移动数据切换扩展入口 |
 | Metadata 配置 | `action.settings.search.path` | 设置搜索路径配置，供设置侧检索并跳转到本应用能力 |
 | Extension（backup） | `BackupExtensionAbility` | SIM 相关设置备份恢复 |
@@ -109,25 +108,64 @@ SimCardManagement 与 **系统设置**、**SceneBoard**、**SimToolkits** 及电
 
 **功能与调用链路对照**：
 
-| 功能 | 调用链路 | TelephonyKit 模块 | 常用接口 | 说明 |
-|------|---------|-------------------|---------|------|
-| 查询插卡 / 启停状态 | 卡信息组件 → `simServiceProxy` → TelephonyKit | `sim` | `hasSimCard`、`isSimActive`、`getSimState` | 查询卡槽与启停状态 |
-| 启用 / 停用 SIM | `cardInfomation` → `SimServiceProxy.setSimActive` → TelephonyKit | `sim` | `activateSim` / `deactivateSim` | 写入卡槽启停 |
-| 编辑显示名称 / 号码 | `editSimInfoDialog` → `simServiceProxy` → TelephonyKit | `sim` | `setShowName` / `setShowNumber`；读取 `getShowName` / `getShowNumber` / `getSimSpn` | 写回系统显示字段 |
-| 默认拨号卡 | `selectDefaultVoiceDialog` → `simServiceProxy` → TelephonyKit | `sim` | `getDefaultVoiceSlotId` / `setDefaultVoiceSlotId` | 设置默认语音卡 |
-| 默认移动数据卡 | `defaultDataComponent` → `radioServiceProxy` → TelephonyKit | `radio` | `getPrimarySlotId` / `setPrimarySlotId` | 设置默认上网卡 |
-| 控制中心移动数据 | `MobileDataChangeExtAbility` → `mobileDataToggleDialog` → TelephonyKit | `radio` / `data` / `call` / `observer` | `setPrimarySlotId`、`enableCellularData`、`getCallState` | 切换上网卡与数据总开关 |
-| SIM PIN / PUK | `simProtection` / `pinComponent` → `pinModel` → TelephonyKit | `sim` | `getLockState`、`setLockState`、`unlockPin`、`unlockPuk`、`alterPin` | PIN 开关、解锁与改密 |
-| 备份恢复写回 | `backup` / `RestoreUtil` → TelephonyKit | `sim` / `radio` | `setShowName`、`setDefaultVoiceSlotId`、`deactivateSim`、`setPrimarySlotId` | 恢复时写回显示名、默认拨号/上网卡及停用状态 |
+`SimServiceProxy`（`model/simServiceProxy.ets`）是对 `@ohos.telephony.sim` 的调用封装，位于调用链路中「页面 / 组件」与 TelephonyKit 之间，统一承接插卡与启停状态查询、SIM 启停、显示名称 / 号码读写、默认拨号卡等 SIM 侧操作；默认上网卡等 Radio 能力由同类的 `radioServiceProxy` 封装。
 
-补充：智能双卡开关走 Settings；STK 跳转走 AbilityKit `startAbility`，均不经 TelephonyKit。
+- **查询插卡 / 启停状态**
+  - 调用链路：卡信息组件 → `simServiceProxy` → TelephonyKit
+  - TelephonyKit 模块：`sim`
+  - 常用接口：`hasSimCard`、`isSimActive`、`getSimState`
+  - 说明：查询卡槽与启停状态
+
+- **启用 / 停用 SIM**
+  - 调用链路：`cardInfomation` → `SimServiceProxy.setSimActive` → TelephonyKit
+  - TelephonyKit 模块：`sim`
+  - 常用接口：`activateSim` 、 `deactivateSim`
+  - 说明：写入卡槽启停
+
+- **编辑显示名称 / 号码**
+  - 调用链路：`editSimInfoDialog` → `simServiceProxy` → TelephonyKit
+  - TelephonyKit 模块：`sim`
+  - 常用接口：写入 `setShowName` 、 `setShowNumber`；读取 `getShowName`、`getShowNumber`、`getSimSpn`
+  - 说明：写回系统显示字段
+
+- **默认拨号卡**
+  - 调用链路：`selectDefaultVoiceDialog` → `simServiceProxy` → TelephonyKit
+  - TelephonyKit 模块：`sim`
+  - 常用接口：`getDefaultVoiceSlotId` 、 `setDefaultVoiceSlotId`
+  - 说明：设置默认语音卡
+
+- **默认移动数据卡**
+  - 调用链路：`defaultDataComponent` → `radioServiceProxy` → TelephonyKit
+  - TelephonyKit 模块：`radio`
+  - 常用接口：`getPrimarySlotId` 、 `setPrimarySlotId`
+  - 说明：设置默认上网卡
+
+- **控制中心移动数据**
+  - 调用链路：`MobileDataChangeExtAbility` → `mobileDataToggleDialog` → TelephonyKit
+  - TelephonyKit 模块：`radio`、`data`、`call`、`observer`
+  - 常用接口：`setPrimarySlotId`、`enableCellularData`、`getCallState`
+  - 说明：切换上网卡与数据总开关
+
+- **SIM PIN / PUK**
+  - 调用链路：`simProtection` 、 `pinComponent` → `pinModel` → TelephonyKit
+  - TelephonyKit 模块：`sim`
+  - 常用接口：`getLockState` 、 `setLockState`、`unlockPin` 、 `unlockPuk`、`alterPin`
+  - 说明：PIN 开关、解锁与改密
+
+- **备份恢复写回**
+  - 调用链路：`backup` 、 `RestoreUtil` → TelephonyKit
+  - TelephonyKit 模块：`sim`、`radio`
+  - 常用接口：`setShowName`、`setDefaultVoiceSlotId`、`deactivateSim`、`setPrimarySlotId`
+  - 说明：恢复时写回显示名、默认拨号/上网卡及停用状态
+
+补充：STK 跳转走 AbilityKit `startAbility`，不经 TelephonyKit。
 
 ## 编译构建
 
 本工程为独立 HAP 应用工程，使用 Hvigor 构建，产物为 `com.ohos.simcardmanagement` 系统应用包；流水线可将签名产物重命名为 `SimCardManagement.hap` 并预装至 `/system/app/SimCardManagement/`。
 
 ### 环境要求
-- OpenHarmony SDK：以 `build-profile.json5` 为准（当前 `compileSdkVersion` 23、`compatibleSdkVersion` 20、`targetSdkVersion` 20）
+- OpenHarmony SDK：以 `build-profile.json5` 为准（当前 `compileSdkVersion` 26.0.0、`compatibleSdkVersion` 23、`targetSdkVersion` 23）
 - DevEco Studio 或命令行 Hvigor 工具链
 - 系统签名证书（见 `signature/`）
 
@@ -189,7 +227,7 @@ SimCardManagement 采用 **ArkTS** 语言开发，UI 基于 ArkUI Stage 模型�
 
 **场景3：SIM 卡保护联动卡槽启停状态判断**
 
-通过 TelephonyKit 调用 `isSimActive`、`getLockState` / `setLockState` 及 `unlockPin` / `unlockPuk` / `alterPin` 等，可与卡槽启停状态联动后再进入保护流程。入口：`pinModel.ets`、`simProtection.ets`、`pinComponent.ets`。
+通过 TelephonyKit 调用 `isSimActive`、`getLockState` / `setLockState` 及 `unlockPin` / `unlockPuk`、`alterPin` 等，可与卡槽启停状态联动后再进入保护流程。入口：`pinModel.ets`、`simProtection.ets`、`pinComponent.ets`。
 ```typescript
     // TelephonyKit：sim.isSimActive
     const isActive = SimServiceProxy.isSimActive(slotId);
@@ -321,8 +359,8 @@ simcardmanagement
 │  └─src/main/
 │     ├─ets/
 │     │  ├─Application/                 # SIM 卡管理进程 AbilityStage 初始化
-│     │  ├─MainAbility/                 # 设置内 SIM 管理主页、智能双卡对话框入口
-│     │  ├─pages/                       # SIM 主页、SIM 卡保护页、智能双卡页
+│     │  ├─MainAbility/                 # 设置内 SIM 管理主页入口
+│     │  ├─pages/                       # SIM 主页、SIM 卡保护页
 │     │  ├─uiExtensionAbility/          # 控制中心切换默认移动数据卡扩展
 │     │  ├─model/                       # 启停 SIM、默认拨号/上网卡、PIN 等 TelephonyKit 封装
 │     │  ├─insightintents/              # 语音/意图：切换默认上网卡、拨号卡、启停 SIM
@@ -335,7 +373,7 @@ simcardmanagement
 │     │  ├─database/                    # 查询 Settings / Telephony 卡信息（非自建业务库）
 │     │  ├─backup/                      # 备份恢复 SIM 显示名、默认拨号/上网卡等
 │     │  ├─WorkSchedulerExtension/      # SIM 管理相关统计上报调度
-│     │  └─utils/                       # 双卡页适配、显示缩放、字符串处理
+│     │  └─utils/                       # 页面适配、显示缩放、字符串处理
 │     ├─resources/                      # SIM 文案、设置搜索路径、多语言资源
 │     └─module.json5                    # SIM 管理 Ability、Telephony 相关权限声明
 │  └─src/ohosTest/                      # SIM 启停、PIN、默认卡等 Hypium 用例

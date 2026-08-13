@@ -52,12 +52,12 @@ The overall structure is divided into product layer, feature layer, and common l
 
 | Main capability | Key paths | Description (including TelephonyKit / launch APIs) |
 | --------------- | ------- | ----------- |
-| Edit card info | `common/components/cardInfomation.ets`, `dialog/editSimInfoDialog.ets` | Card info display and name/number editing; write-back calls `@ohos.telephony.sim` `setShowName` / `setShowNumber`; read can use `getShowName` / `getShowNumber` / `getSimSpn`, and so on |
-| Enable/Disable SIM | `common/components/cardInfomation.ets`, `model/simServiceProxy.ets` | Enable/disable UI; query `isSimActive`; write via `SimServiceProxy.setSimActive` → `activateSim` / `deactivateSim` |
-| SIM protection | `pages/simProtection.ets`, `common/components/pinComponent.ets`, `model/pinModel.ets` | PIN page and interactions; `pinModel` calls `getLockState` / `setLockState`, `unlockPin` / `unlockPuk`, `alterPin` via `@kit.TelephonyKit` |
-| Default mobile data selection | `common/components/defaultDataComponent.ets`, `common/components/mobileDataToggleDialog.ets`, `uiExtensionAbility/MobileDataChangeExtAbility.ets`, `model/radioServiceProxy.ets` | Default data SIM: `radio.getPrimarySlotId` / `setPrimarySlotId`; control-center switch: `data.isCellularDataEnabled` / `enableCellularData`; when restricting switch during calls, use `call.getCallState` and `observer` call-state callbacks |
+| Edit card info | `common/components/cardInfomation.ets`, `dialog/editSimInfoDialog.ets` | Card info display and name/number editing; write-back calls `@ohos.telephony.sim` `setShowName` 、 `setShowNumber`; read can use `getShowName`, `getShowNumber`, `getSimSpn`, and so on |
+| Enable/Disable SIM | `common/components/cardInfomation.ets`, `model/simServiceProxy.ets` | Enable/disable UI; query `isSimActive`; write via `SimServiceProxy.setSimActive` → `activateSim` 、 `deactivateSim` |
+| SIM protection | `pages/simProtection.ets`, `common/components/pinComponent.ets`, `model/pinModel.ets` | PIN page and interactions; `pinModel` calls `getLockState` / `setLockState`, `unlockPin` 、 `unlockPuk`, `alterPin` via `@kit.TelephonyKit` |
+| Default mobile data selection | `common/components/defaultDataComponent.ets`, `common/components/mobileDataToggleDialog.ets`, `uiExtensionAbility/MobileDataChangeExtAbility.ets`, `model/radioServiceProxy.ets` | Default data SIM: `radio.getPrimarySlotId` / `setPrimarySlotId`; control-center switch: `data.isCellularDataEnabled` 、 `enableCellularData`; when restricting switch during calls, use `call.getCallState` and `observer` call-state callbacks |
 | Default dialing card settings | `common/components/dialog/selectDefaultVoiceDialog.ets`, `model/simServiceProxy.ets` | Default voice SIM settings dialog; core calls `@ohos.telephony.sim` `getDefaultVoiceSlotId` / `setDefaultVoiceSlotId` |
-| STK linkage | `common/components/simToolkitsComponent.ets` | STK entry display and navigation; calls `startAbility` to launch `com.ohos.simtoolkits` / `EntryAbility` (parameters include `pageUrl`, `slotId`) |
+| STK linkage | `common/components/simToolkitsComponent.ets` | STK entry display and navigation; calls `startAbility` to launch `com.ohos.simtoolkits` 、 `EntryAbility` (parameters include `pageUrl`, `slotId`) |
 
 **Common layer description**:
 
@@ -78,18 +78,17 @@ SimCardManagement works with **Settings**, **SceneBoard**, **SimToolkits**, and 
 - Settings launches `com.ohos.simcardmanagement.MainAbility` through a UIExtension Want, and can integrate Settings search via `action.settings.search.path`.
 - SceneBoard embeds mobile-data switching and default data-card UI through `MobileDataChangeExtAbility`.
 - SimToolkits: home-page `SimToolkitsComponent` calls `startAbility` (`bundleName`=`com.ohos.simtoolkits`, `abilityName`=`EntryAbility`) to launch STK.
-- Telephony read/write is described in **Telephony subsystem integration** below. Smart dual-card toggles and similar policies use **Settings** (`@ohos.settings`), not Telephony writes.
+- Telephony read/write is described in **Telephony subsystem integration** below.
 
 **Invocation scenarios**:
 
-SIM management page inside Settings, Settings search, control-center mobile data switching, smart dual-card related system dialogs, STK entry navigation, and so on.
+SIM management page inside Settings, Settings search, control-center mobile data switching, STK entry navigation, and so on.
 
 **External interfaces**:
 
 | Interface type | Interface identifier | Description |
 |------|------|------|
 | UIExtension (sys/commonUI) | `com.ohos.simcardmanagement.MainAbility` | Main Settings entry launches the SIM management page via Want |
-| UIExtension (sys/commonUI) | `SmartDualCardDialogAbility` | Entry for smart dual-card related system dialogs |
 | UIExtension (sys/commonUI) | `MobileDataChangeExtAbility` | Extension entry for mobile-data switching in SceneBoard control center |
 | Metadata configuration | `action.settings.search.path` | Settings search path configuration for Settings to find and jump to this app capability |
 | Extension (backup) | `BackupExtensionAbility` | Backup/restore for SIM-related settings |
@@ -109,25 +108,64 @@ On status changes, subscribe via `@ohos.telephony.observer` to events such as `s
 
 **Feature and call-chain mapping**:
 
-| Feature | Call chain | TelephonyKit module | Typical APIs | Description |
-|---------|------------|---------------------|--------------|-------------|
-| Query SIM presence / enable state | card-info component → `simServiceProxy` → TelephonyKit | `sim` | `hasSimCard`, `isSimActive`, `getSimState` | Query slot and enable state |
-| Enable / disable SIM | `cardInfomation` → `SimServiceProxy.setSimActive` → TelephonyKit | `sim` | `activateSim` / `deactivateSim` | Write slot enable state |
-| Edit display name / number | `editSimInfoDialog` → `simServiceProxy` → TelephonyKit | `sim` | `setShowName` / `setShowNumber`; read `getShowName` / `getShowNumber` / `getSimSpn` | Write back system display fields |
-| Default dialing card | `selectDefaultVoiceDialog` → `simServiceProxy` → TelephonyKit | `sim` | `getDefaultVoiceSlotId` / `setDefaultVoiceSlotId` | Set default voice SIM |
-| Default mobile data SIM | `defaultDataComponent` → `radioServiceProxy` → TelephonyKit | `radio` | `getPrimarySlotId` / `setPrimarySlotId` | Set default data SIM |
-| Control-center mobile data | `MobileDataChangeExtAbility` → `mobileDataToggleDialog` → TelephonyKit | `radio` / `data` / `call` / `observer` | `setPrimarySlotId`, `enableCellularData`, `getCallState` | Switch default data SIM and master cellular data switch |
-| SIM PIN / PUK | `simProtection` / `pinComponent` → `pinModel` → TelephonyKit | `sim` | `getLockState`, `setLockState`, `unlockPin`, `unlockPuk`, `alterPin` | PIN on/off, unlock, and change PIN |
-| Backup restore write-back | `backup` / `RestoreUtil` → TelephonyKit | `sim` / `radio` | `setShowName`, `setDefaultVoiceSlotId`, `deactivateSim`, `setPrimarySlotId` | On restore, write back display name, default dial/data SIM, and deactivated state |
+`SimServiceProxy` (`model/simServiceProxy.ets`) wraps `@ohos.telephony.sim` calls. It sits between the page / component and TelephonyKit in the call chain, and handles SIM-side operations such as presence / enable-state queries, SIM activate/deactivate, display name / number read-write, and the default dialing card. Radio capabilities such as the default data SIM are wrapped by the similar `radioServiceProxy`.
 
-Note: Smart dual-card toggles use Settings; STK navigation uses AbilityKit `startAbility`. Neither goes through TelephonyKit.
+- **Query SIM presence / enable state**
+  - Call chain: card-info component → `simServiceProxy` → TelephonyKit
+  - TelephonyKit module: `sim`
+  - Typical APIs: `hasSimCard`, `isSimActive`, `getSimState`
+  - Description: Query slot and enable state
+
+- **Enable / disable SIM**
+  - Call chain: `cardInfomation` → `SimServiceProxy.setSimActive` → TelephonyKit
+  - TelephonyKit module: `sim`
+  - Typical APIs: `activateSim`, `deactivateSim`
+  - Description: Write slot enable state
+
+- **Edit display name / number**
+  - Call chain: `editSimInfoDialog` → `simServiceProxy` → TelephonyKit
+  - TelephonyKit module: `sim`
+  - Typical APIs: write `setShowName`, `setShowNumber`; read `getShowName`, `getShowNumber`, `getSimSpn`
+  - Description: Write back system display fields
+
+- **Default dialing card**
+  - Call chain: `selectDefaultVoiceDialog` → `simServiceProxy` → TelephonyKit
+  - TelephonyKit module: `sim`
+  - Typical APIs: `getDefaultVoiceSlotId`, `setDefaultVoiceSlotId`
+  - Description: Set default voice SIM
+
+- **Default mobile data SIM**
+  - Call chain: `defaultDataComponent` → `radioServiceProxy` → TelephonyKit
+  - TelephonyKit module: `radio`
+  - Typical APIs: `getPrimarySlotId`, `setPrimarySlotId`
+  - Description: Set default data SIM
+
+- **Control-center mobile data**
+  - Call chain: `MobileDataChangeExtAbility` → `mobileDataToggleDialog` → TelephonyKit
+  - TelephonyKit module: `radio`, `data`, `call`, `observer`
+  - Typical APIs: `setPrimarySlotId`, `enableCellularData`, `getCallState`
+  - Description: Switch default data SIM and master cellular data switch
+
+- **SIM PIN / PUK**
+  - Call chain: `simProtection`, `pinComponent` → `pinModel` → TelephonyKit
+  - TelephonyKit module: `sim`
+  - Typical APIs: `getLockState`, `setLockState`, `unlockPin`, `unlockPuk`, `alterPin`
+  - Description: PIN on/off, unlock, and change PIN
+
+- **Backup restore write-back**
+  - Call chain: `backup`, `RestoreUtil` → TelephonyKit
+  - TelephonyKit module: `sim`, `radio`
+  - Typical APIs: `setShowName`, `setDefaultVoiceSlotId`, `deactivateSim`, `setPrimarySlotId`
+  - Description: On restore, write back display name, default dial/data SIM, and deactivated state
+
+Note: STK navigation uses AbilityKit `startAbility` and does not go through TelephonyKit.
 
 ## Build
 
 This is a standalone HAP application project built with Hvigor. The product is the `com.ohos.simcardmanagement` system application package. The pipeline may rename the signed artifact to `SimCardManagement.hap` and preinstall it under `/system/app/SimCardManagement/`.
 
 ### Environment Requirements
-- OpenHarmony SDK: see `build-profile.json5` (currently `compileSdkVersion` 23, `compatibleSdkVersion` 20, `targetSdkVersion` 20)
+- OpenHarmony SDK: see `build-profile.json5` (currently `compileSdkVersion` 26.0.0, `compatibleSdkVersion` 23, `targetSdkVersion` 23)
 - DevEco Studio or command-line Hvigor toolchain
 - System signing certificates (see `signature/`)
 
@@ -189,7 +227,7 @@ Through TelephonyKit, call `activateSim` / `deactivateSim` to enable or disable 
 
 **Scenario 3: SIM protection linked with slot enable-state check**
 
-Through TelephonyKit, call `isSimActive`, `getLockState` / `setLockState`, and `unlockPin` / `unlockPuk` / `alterPin`, and so on; link with slot enable state, then enter protection flows. Entry: `pinModel.ets`, `simProtection.ets`, `pinComponent.ets`.
+Through TelephonyKit, call `isSimActive`, `getLockState` / `setLockState`, and `unlockPin` / `unlockPuk`, `alterPin`, and so on; link with slot enable state, then enter protection flows. Entry: `pinModel.ets`, `simProtection.ets`, `pinComponent.ets`.
 ```typescript
     // TelephonyKit: sim.isSimActive
     const isActive = SimServiceProxy.isSimActive(slotId);
@@ -321,8 +359,8 @@ simcardmanagement
 │  └─src/main/
 │     ├─ets/
 │     │  ├─Application/                 # AbilityStage init for the SIM management process
-│     │  ├─MainAbility/                 # Settings SIM management home and smart dual-card dialog entry
-│     │  ├─pages/                       # SIM home, SIM protection page, and smart dual-card page
+│     │  ├─MainAbility/                 # Settings SIM management home entry
+│     │  ├─pages/                       # SIM home and SIM protection page
 │     │  ├─uiExtensionAbility/          # Control-center extension to switch default data SIM
 │     │  ├─model/                       # TelephonyKit wrappers for SIM on/off, default dial/data, PIN, and so on
 │     │  ├─insightintents/              # Voice/intent: switch default data/dial SIM, enable/disable SIM
@@ -335,7 +373,7 @@ simcardmanagement
 │     │  ├─database/                    # Query Settings / Telephony SIM info (not an app-owned business DB)
 │     │  ├─backup/                      # Backup/restore SIM display name, default dial/data SIM, and so on
 │     │  ├─WorkSchedulerExtension/      # Scheduled reporting for SIM management
-│     │  └─utils/                       # Dual-SIM page adaptation, display scale, string handling
+│     │  └─utils/                       # Page adaptation, display scale, string handling
 │     ├─resources/                      # SIM strings, Settings search path, multi-language resources
 │     └─module.json5                    # SIM management Ability and Telephony-related permission declarations
 │  └─src/ohosTest/                      # Hypium cases for SIM on/off, PIN, default card, etc.
