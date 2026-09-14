@@ -746,7 +746,11 @@ export default struct eSimSet {
     let context = SimCardGlobalContextHelper.getInstance()
       .getValue<common.UIExtensionContext>(Constants.SIM_CARD_ABILITY_CONTEXT);
     if (typeof context !== 'undefined' && context !== null) {
-      let slotId: number = Number(settings.getValueSync(context, 'satellite_slot_id', '-1'));
+      const slotIdText: string = settings.getValueSync(context, 'satellite_slot_id', '-1');
+      let slotId: number = -1;
+      if (/^-?\d+$/.test(slotIdText)) {
+        slotId = Number.parseInt(slotIdText, 10);
+      }
       LogUtils.i(TAG, 'getSlotId:' + JSON.stringify(slotId));
       callback(slotId);
     }
